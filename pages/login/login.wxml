@@ -1,0 +1,13 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+        <input placeholder="请输入您的账户名" name="username"/>
+    </view>
+    <view class="section">
+        <input placeholder="请输入您的密码" password name="paswd"/>
+    </view>
+    <view class="btn-area">
+        <button formType="submit">登录</button>
+        <button formType="reset">重置</button>
+    </view>
+    <view class="reg"><navigator url="../register/register"  hover-class="other-navigator-hover">如果没有账户，点击注册</navigator></view>
+</form>

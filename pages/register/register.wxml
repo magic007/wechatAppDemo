@@ -1,0 +1,18 @@
+<loading hidden="{{loading}}">
+  {{tips}}
+</loading>
+<form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="section">
+        <input placeholder="请输入您的账户名" name="accoutName"/>
+    </view>
+    <view class="section">
+        <input placeholder="请输入您的密码" password name="accoutPswd"/>
+    </view>
+    <view class="section">
+        <input placeholder="请重新输入您的密码" password name="accoutPswd1"/>
+    </view>
+    <view class="btn-area">
+        <button formType="submit">注册</button>
+        <button formType="reset">重置</button>
+    </view>
+</form>

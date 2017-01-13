@@ -1,0 +1,20 @@
+{
+  "pages":[   
+     "pages/login/login",
+    "pages/register/register",
+    "pages/index/index",
+    "pages/other/other"
+   
+    
+    
+    
+   
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Bmob后端云SDKdemo",
+    "navigationBarTextStyle":"black"
+  }
+}
