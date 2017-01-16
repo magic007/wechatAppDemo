@@ -1,10 +1,21 @@
 小程序demo更新记录
 ===================
 
-### 增删改演示
-
+### 增删改，登录，注册，图片上传演示
+----------
 打开Demo你可以这样操作:
-![](http://i.imgur.com/oiT4RBe.gif)
+
+
+![](http://i.imgur.com/oiT4RBe.gif)![](http://i.imgur.com/ReFyRhm.gif)
+
+#### <i class="icon-file"></i> 版本 v0.4.1
+> **Note:**
+
+> - 修复注册跳转错误
+> - 增加获取OpenId示例
+
+----------
+
 
 #### <i class="icon-file"></i> 版本 v0.4.0
 > **Note:**

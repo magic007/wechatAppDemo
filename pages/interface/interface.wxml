@@ -3,14 +3,16 @@
 <view class="container">
   <template is="head" data="{{title: 'navigator'}}" />
   <view class="page-body">
-
     <view class="btn-area">
       <navigator url="../picasa/picasa" hover-class="navigator-hover">
-        <button type="default">图片管理</button>
-      </navigator>   
+        <button type="default">图片上传</button>
+      </navigator>
       <navigator url="../sendSms/sendSms" hover-class="navigator-hover">
         <button type="default">发送短信</button>
-      </navigator>    
+      </navigator>
+      <navigator url="../getOpenId/getOpenId" hover-class="navigator-hover">
+        <button type="default">获取openId</button>
+      </navigator>
     </view>
   </view>
   <template is="foot" />

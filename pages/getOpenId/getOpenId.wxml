@@ -1,0 +1,16 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <template is="head" data="{{title: 'navigator'}}" />
+  <view class="page-body">
+    <view class="btn-area">
+      <loading hidden="{{loading}}">
+        获取中...
+      </loading>
+      <button type="primary" bindtap="getOpenId">获取Openid</button>
+      
+       <view><text>返回OpenId：{{url}}</text></view> 
+    </view>
+  </view>
+  <template is="foot" />
+</view>

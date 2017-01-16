@@ -6,6 +6,7 @@
     "pages/account/account",
     
     "pages/login/login",
+    "pages/getOpenId/getOpenId",
     
     "pages/register/register",
     "pages/picasa/picasa"
