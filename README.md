@@ -1,5 +1,11 @@
 小程序demo更新记录
 ===================
+
+### 增删改演示
+
+打开Demo你可以这样操作:
+![](http://i.imgur.com/oiT4RBe.gif)
+
 #### <i class="icon-file"></i> 版本 v0.4.0
 > **Note:**
 
