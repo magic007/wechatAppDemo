@@ -1,20 +1,45 @@
 {
-  "pages":[   
-     "pages/login/login",
-    "pages/register/register",
+  "pages": [
     "pages/index/index",
-    "pages/other/other"
-   
+    "pages/sendSms/sendSms",
+    "pages/interface/interface",
+    "pages/account/account",
     
+    "pages/login/login",
     
-    
-   
-    
+    "pages/register/register",
+    "pages/picasa/picasa"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Bmob后端云SDKdemo",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "Bmob-小程序Demo",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
+        "text": "日记管理"
+      },
+      {
+        "pagePath": "pages/interface/interface",
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_HL.png",
+        "text": "常用接口"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "iconPath": "image/wechat.png",
+        "selectedIconPath": "image/wechatHL.png",
+        "text": "我"
+      }
+    ]
   }
 }

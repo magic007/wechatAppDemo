@@ -1,29 +1,26 @@
-
 <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px; width: {{windowWidth}}px; ">
-    <navigator url="../other/other" hover-class="navigator-hover">其他功能</navigator>
-    <button type="default"   bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>
-    <view class="diary_list" wx:for="{{diaryList}}" wx:key="diaryItem">
-        <text>标题：{{item.title}}</text>
-        <view>内容：{{item.content}}</view>
-        <button bindtap="deleteDiary"  data-id="{{item.objectId}}">删除</button>
-        <button bindtap="toModifyDiary"  data-id="{{item.objectId}}" class="modify" data-content="{{item.content}}" data-title="{{item.title}}">编辑</button>
-    </view>
+  
+  <button type="primary" bindtap="toAddDiary"  hover-class="other-button-hover"> 增加日记 </button>
+  <view class="diary_list" wx:for="{{diaryList}}" wx:key="diaryItem">
+    <text>标题：{{item.title}}</text>
+    <view>内容：{{item.content}}</view>
+    <button bindtap="deleteDiary" data-id="{{item.objectId}}">删除</button>
+    <button bindtap="toModifyDiary" data-id="{{item.objectId}}" class="modify" data-content="{{item.content}}" data-title="{{item.title}}">编辑</button>
+  </view>
 </scroll-view>
 <view class="add_layer" wx:if="{{writeDiary}}">
-    <form bindsubmit="addDiary">
-        <input placeholder="请输入标题" name="title"/>
-        <textarea placeholder="请输入日记内容"  name="content"/>
-        <button   loading="{{loading}}" 
-        formType="submit" hover-class="other-button-hover"> 发布 </button>
-        <button type="defualt"  bindtap="closeLayer"> 取消 </button>
-    </form>
+  <form bindsubmit="addDiary">
+    <input placeholder="请输入标题" name="title" />
+    <textarea placeholder="请输入日记内容" name="content" />
+    <button loading="{{loading}}" formType="submit" hover-class="other-button-hover"> 发布 </button>     
+    <button type="defualt" bindtap="closeLayer"> 取消 </button>
+  </form>
 </view>
 <view class="add_layer" wx:if="{{modifyDiarys}}">
-    <form bindsubmit="modifyDiary">
-        <input placeholder="请输入标题" name="title" value="{{nowTitle}}"/>
-        <textarea placeholder="请输入日记内容"  name="content" value="{{nowContent}}"/>
-        <button   loading="{{loading}}" 
-        formType="submit" hover-class="other-button-hover" hover-start-time="100"> 修改 </button>
-        <button type="defualt"  bindtap="closeAddLayer"> 取消 </button>
-    </form>
+  <form bindsubmit="modifyDiary">
+    <input placeholder="请输入标题" name="title" value="{{nowTitle}}" />
+    <textarea placeholder="请输入日记内容" name="content" value="{{nowContent}}" />
+    <button loading="{{loading}}" formType="submit" hover-class="other-button-hover" hover-start-time="100"> 修改 </button>
+    <button type="defualt" bindtap="closeAddLayer"> 取消 </button>
+  </form>
 </view>

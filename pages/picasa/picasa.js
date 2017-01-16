@@ -3,7 +3,7 @@ var that;
 var Bmob = require('../../utils/bmob.js');
 var common=require('../../utils/common.js');
 Page({
-  data:{
+  data:{    
       loading:true
   },
   onLoad:function(){
@@ -36,7 +36,7 @@ Page({
               var name="1.jpg";//上传的图片的别名
               var file=new Bmob.File(name,tempFilePaths);
               file.save().then(function(res){
-                that.setData({
+                that.setData({        
                   loading:true,
                   url:res.url()
                 })
@@ -47,8 +47,5 @@ Page({
           
       }
     })
-  },
-  deleteFile:function(){
-    file.destroy();
-  }
+  }  
 })

@@ -1,0 +1,16 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <template is="head" data="{{title: 'navigator'}}" />
+  <view class="page-body">
+    <view class="btn-area">
+      <loading hidden="{{loading}}">
+        图片上传中...
+      </loading>
+      <button type="primary" bindtap="upImg">图片上传</button>
+      <image class="userinfo-avatar" src="{{url}}" background-size="cover"></image>
+       <view><text>返回地址：{{url}}</text></view> 
+    </view>
+  </view>
+  <template is="foot" />
+</view>

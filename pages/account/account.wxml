@@ -1,0 +1,24 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <template is="head" data="{{title: 'navigator'}}" />
+  <view class="page-body">
+    <view class="index-hd">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <view class="index-desc">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，你平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。 </view>
+    </view>
+    <view class="btn-area">
+      <navigator url="../login/login" hover-class="navigator-hover">
+        <button type="default">跳转登录</button>
+      </navigator>   
+      <navigator url="../register/register" hover-class="navigator-hover">
+        <button type="default">跳转注册</button>
+      </navigator>   
+      <navigator bindtap="logout" hover-class="navigator-hover">
+        <button type="default">退出Bmob</button>
+      </navigator>    
+    </view>
+  </view>
+  <template is="foot" />
+</view>

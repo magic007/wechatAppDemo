@@ -1,0 +1,17 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <template is="head" data="{{title: 'navigator'}}" />
+  <view class="page-body">
+
+    <view class="btn-area">
+      <navigator url="../picasa/picasa" hover-class="navigator-hover">
+        <button type="default">图片管理</button>
+      </navigator>   
+      <navigator url="../sendSms/sendSms" hover-class="navigator-hover">
+        <button type="default">发送短信</button>
+      </navigator>    
+    </view>
+  </view>
+  <template is="foot" />
+</view>

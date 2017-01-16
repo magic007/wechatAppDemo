@@ -1,0 +1,23 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <template is="head" data="{{title: 'navigator'}}" />
+  <view class="page-body">
+    <view class="page-section-title">此代码会发送一个示例短信验证码，目前每个测试账号有一定的免费短信，测试账号也有用完的可能，如接收不到，可切换自己的Bmob APP key，默认收到的短信签名是【比目科技】，签名可以在后台自定义</view>
+    <view class="btn-area">
+    <form bindsubmit="sendSms" bindreset="formReset">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="phone" placeholder="请输入手机号码" />
+          </view>
+        </view>
+      </view>
+      
+      <button type="primary" formType="submit">立即发送</button>
+      <button formType="reset">重置</button>
+      </form>
+    </view>
+  </view>
+  <template is="foot" />
+</view>

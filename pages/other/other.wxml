@@ -1,6 +1,0 @@
-<loading hidden="{{loading}}">
-  图片上传中...
-</loading>
-<button bindtap="upImg">图片</button>
-<text>返回地址：{{url}}</text>
-<button bindtap="deleteImg">文件删除</button>
