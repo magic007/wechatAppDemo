@@ -8,6 +8,14 @@
 
 ![](http://i.imgur.com/oiT4RBe.gif)![](http://i.imgur.com/ReFyRhm.gif)
 
+#### <i class="icon-file"></i> 版本 v0.4.2
+> **Note:**
+
+> - 修复短信验证Bug
+> - 添加短信验证Demo
+
+----------
+
 #### <i class="icon-file"></i> 版本 v0.4.1
 > **Note:**
 
@@ -55,4 +63,4 @@
 
 ----------
 
-> **Tip:** 更多信息请查看[官方文档](http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html "官方使用文档")  ，如需帮助可以加入小程序官方讨论群：**118541934**。
+> **Tip:** 更多信息请查看[官方文档](http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html "官方使用文档")  ，如需帮助可以加入小程序讨论QQ群：**118541934**。

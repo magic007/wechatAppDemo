@@ -6911,7 +6911,7 @@
      * @return {Bmob.Promise}
      */
         verifySmsCode: function(mob, verifyCode, options) {
-            data = {
+            var data = {
                 "mobilePhoneNumber": mob
             };
             var request = Bmob._request("verifySmsCode/" + verifyCode, null, null, 'POST', Bmob._encode(data, null, true));
