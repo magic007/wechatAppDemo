@@ -1,4 +1,7 @@
-<scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px; width: {{windowWidth}}px; ">
+<view class="btn-area" style="margin-top:0px;">
+<scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
+  
+  
   
   <button type="primary" bindtap="toAddDiary"  hover-class="other-button-hover"> 增加日记 </button>
   <view class="diary_list" wx:for="{{diaryList}}" wx:key="diaryItem">
@@ -23,4 +26,6 @@
     <button loading="{{loading}}" formType="submit" hover-class="other-button-hover" hover-start-time="100"> 修改 </button>
     <button type="defualt" bindtap="closeAddLayer"> 取消 </button>
   </form>
+</view>
+
 </view>

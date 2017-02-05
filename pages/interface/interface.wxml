@@ -13,6 +13,9 @@
       <navigator url="../getOpenId/getOpenId" hover-class="navigator-hover">
         <button type="default">获取openId</button>
       </navigator>
+      <navigator url="../pay/pay" hover-class="navigator-hover">
+        <button type="default">微信支付</button>
+      </navigator>
     </view>
   </view>
   <template is="foot" />

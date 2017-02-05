@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/sendSms/sendSms",
     "pages/interface/interface",
@@ -9,7 +10,12 @@
     "pages/getOpenId/getOpenId",
     
     "pages/register/register",
+
+    "pages/pay/pay",
+
     "pages/picasa/picasa"
+
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

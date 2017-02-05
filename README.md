@@ -63,4 +63,46 @@
 
 ----------
 
+##使用方法
+###说明
+----------
+本小程序示例不需要购买任何相关服务器，开箱即用。如是之前平台老用户则不需重复申请账号，并且打通之前的Android，IOS，等平台数据，本示例整合了常用的功能，开发请按照以下步骤操作。
+
+###将sdk引入到微信小程序中
+----------
+1. 将`utils`目录下`bmob.js`,`underscore.js` 复制至项目中utils目录下
+2. App.js 初始化SDK`
+var Bmob = require('utils/bmob.js');`
+`
+Bmob.initialize("4195da08a4bfe3814a4284de579fd8c0", "f0fd39c21b7ffab76c530eb5d63b3415");`
+
+###`DEMO` 数据查询简单示例
+----------
+#####具体请查看`Demo` 代码
+
+    var Diary= Bmob.Object.extend("diary");
+      var query = new Bmob.Query(Diary);
+      // 查询所有数据
+      query.limit(that.data.limit);
+      query.find({
+        success: function(results) {
+          // 循环处理查询到的数据
+          that.setData({
+            diaryList:results
+          })
+        },
+        error: function(error) {
+          console.log("查询失败: " + error.code + " " + error.message);
+        }
+      });
+>Tip: 如果你对数据处理要求比较高，可以引入`underscore.js`库。
+
+###配置AppId和AppSecret
+----------
+登录网址后台点击`应用`->`设置`->`微信小程序帐号服务配置`填写```AppID```,`AppSecret`。
+>Tip: 如果你的小程序不需要获取用户`open id`功能，则不需要配置。
+
+
+----------
+
 > **Tip:** 更多信息请查看[官方文档](http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html "官方使用文档")  ，如需帮助可以加入小程序讨论QQ群：**118541934**。

@@ -31,7 +31,7 @@ Page({
           })
         },
         error: function(error) {
-          alert("查询失败: " + error.code + " " + error.message);
+          console.log("查询失败: " + error.code + " " + error.message);
         }
       });
     wx.getSystemInfo({
