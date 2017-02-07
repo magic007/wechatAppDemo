@@ -7,7 +7,8 @@
       <loading hidden="{{loading}}">
         获取中...
       </loading>
-      <button type="primary" bindtap="getOpenId">立即支付</button>
+      <view><text>如果要使用支付功能，请先在后台配置商户号与商户支付key</text></view> 
+      <button type="primary" bindtap="pay">立即支付</button>
       
        <view><text>开发中。。。{{url}}</text></view> 
     </view>

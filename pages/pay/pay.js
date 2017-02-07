@@ -22,32 +22,36 @@ Page({
   onUnload: function () {
     // 页面关闭
   },
-  getOpenId: function () {
-    //获取open id，请在官网填写微信小程序key
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          //发起网络请求
-          console.log(res.code)
+  pay:function(){
 
-          Bmob.User.requestOpenId(res.code, {
-            success: function (result) {
-              that.setData({
-                loading: true,
-                url: result.openid
-              })
-              console.log(result)
-            },
-            error: function (error) {
-              // Show the error message somewhere
-              console.log("Error: " + error.code + " " + error.message);
-            }
-          });
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-          common.showTip('获取用户登录态失败！', 'loading');
-        }
-      }
-    });
+     Bmob.Pay.wechatPay(0.01,'名称','描述').then(function (obj) {
+          
+            console.log(obj);
+
+        }, function (err) {
+           console.log('eerr');
+            console.log(err);
+        });
+
+
+
+//     wx.requestPayment({
+//    'timeStamp': '1486362934',
+//    'nonceStr': 'fyLCF4kwreIPkfs3',
+//    'package': 'prepay_id=wx20170206143536185c69b57b0760088807',
+//    'signType': 'MD5',
+//    'paySign': 'CECD6D0CAEED6BD509D838F3A5CBB617',
+//    'success':function(res){
+//      console.log(res)
+//       common.showTip(res, 'loading');
+//    },
+//    'fail':function(res){
+//      common.showTip(res, 'loading');
+//      console.log(res)
+//    }
+// })
+
+
   }
+
 })
