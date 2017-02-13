@@ -1,8 +1,11 @@
-function showTip(sms,icon,fun){
+function showTip(sms,icon,fun,t){
+    if(!t){
+        t=1000;
+    }
     wx.showToast({
         title: sms,
         icon:icon,
-        duration: 1000,
+        duration: t,
         success:fun
     })
 }

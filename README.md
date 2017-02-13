@@ -8,6 +8,20 @@
 
 ![](http://i.imgur.com/oiT4RBe.gif)![](http://i.imgur.com/ReFyRhm.gif)
 
+#### <i class="icon-file"></i> 版本 v1.0.0
+> **Note:**
+> 
+> - 增加微信支付接口，只需填写key即可微信收款
+
+
+#### <i class="icon-file"></i> 版本 v0.5.0
+> **Note:**
+
+> - 修复返回当前用户延时问题
+> - 修复修改用户表缓存没更新问题
+
+----------
+
 #### <i class="icon-file"></i> 版本 v0.4.2
 > **Note:**
 

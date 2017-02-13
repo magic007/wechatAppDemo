@@ -71,7 +71,7 @@
     };
 
     // Set the server for Bmob to talk to.
-    Bmob.serverURL = "https://api.bmob.cn";
+    Bmob.serverURL = "http://api.bmob.cn";
     Bmob.fileURL = "http://file.bmob.cn";
 
     // Check whether we are running in Node.js.
@@ -5634,32 +5634,29 @@
                 // var userData = Bmob.localStorage.getItem(Bmob._getBmobPath(
                 //     Bmob.User._CURRENT_USER_KEY));
                 var userData = false;
-                wx.getStorage({
-                    key: Bmob._getBmobPath(Bmob.User._CURRENT_USER_KEY),
-                    success: function (res) {
-                        var userData = res.data;
-                        console.log(res.data)
+                try {
+                    var userData = wx.getStorageSync(Bmob._getBmobPath(Bmob.User._CURRENT_USER_KEY))
+                    if (userData) {
+                        // Do something with return value
+                        Bmob.User._currentUser = Bmob.Object._create("_User");
+                        Bmob.User._currentUser._isCurrentUser = true;
+
+                        var json = JSON.parse(userData);
+                        Bmob.User._currentUser.id = json._id;
+                        delete json._id;
+                        Bmob.User._currentUser._sessionToken = json._sessionToken;
+                        delete json._sessionToken;
+                        Bmob.User._currentUser.set(json);
+
+                        Bmob.User._currentUser._synchronizeAllAuthData();
+                        Bmob.User._currentUser._refreshCache();
+                        Bmob.User._currentUser._opSetQueue = [{}];
+                        return Bmob.User._currentUser;
                     }
-                })
-
-                if (!userData) {
-
+                } catch (e) {
+                    // Do something when catch error
                     return null;
                 }
-                Bmob.User._currentUser = Bmob.Object._create("_User");
-                Bmob.User._currentUser._isCurrentUser = true;
-
-                var json = JSON.parse(userData);
-                Bmob.User._currentUser.id = json._id;
-                delete json._id;
-                Bmob.User._currentUser._sessionToken = json._sessionToken;
-                delete json._sessionToken;
-                Bmob.User._currentUser.set(json);
-
-                Bmob.User._currentUser._synchronizeAllAuthData();
-                Bmob.User._currentUser._refreshCache();
-                Bmob.User._currentUser._opSetQueue = [{}];
-                return Bmob.User._currentUser;
             },
 
             /**
@@ -6955,44 +6952,13 @@
          * options.success, 如果设置了，将会处理云端代码调用成功的情况。  options.error 如果设置了，将会处理云端代码调用失败的情况。  两个函数都是可选的。两个函数都只有一个参数。
          * @return {Bmob.Promise} A promise 将会处理云端代码调用的情况。
          */
-        wechatPay: function (price, product_name, body, options) {
-            var data = { "order_price": price, "product_name": product_name, "body": body, "pay_type": 4 }
+        wechatPay: function (price, product_name, body,openid, options) {
+            var data = { "order_price": price, "product_name": product_name, "body": body, "open_id": openid, "pay_type": 4 }
             var request = Bmob._request("pay", null, null, 'POST',
                 Bmob._encode(data, null, true));
 
             return request.then(function (resp) {
-                console.log(resp);
-                console.log(resp.appInfo.email);
-                console.log('resp');
-                var timeStamp = resp.timestamp,
-                    nonceStr=resp.nonceStr,
-                    packages=resp.package,
-                    sign=resp.sign;
-
-return Bmob._decode(null, resp);
-
-                //暂时未开发完成，写死测试
-                wx.requestPayment({
-                    'timeStamp': '1486362934',
-                    'nonceStr': 'fyLCF4kwreIPkfs3',
-                    'package': 'prepay_id=wx20170206143536185c69b57b0760088807',
-                    'signType': 'MD5',
-                    'paySign': 'CECD6D0CAEED6BD509D838F3A5CBB617',
-                    'success': function (res) {
-                        console.log(res);
-                        return Bmob._decode(null, resp);                   
-                    },
-                    'fail': function (res) {                        
-                        console.log(res);
-                        var promise = new Bmob.Promise();
-                         return promise.reject(1);
-                        //  return res.errMsg;
-                    }
-                })
-
-
-                // return Bmob._decode(null, resp);
-
+                return Bmob._decode(null, resp);
             })._thenRunCallbacks(options);
         },
 
