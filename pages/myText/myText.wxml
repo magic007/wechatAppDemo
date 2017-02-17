@@ -1,0 +1,16 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+<view class="container">
+  <view class="weui-viewanel weui-viewanel_access">
+    <view class="weui-viewanel__bd">
+      <view class="weui-media-box weui-media-box_text" wx:for="{{diaryList}}" wx:key="diaryItem" bindtap="deleteItem" data-id="{{item.objectId}}">
+        <view class="weui-media-box__title">{{item.title}}</view>
+        <view class="weui-media-box__desc">{{item.content}}</view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title">标题二</view>
+        <view class="weui-media-box__desc">内容</view>
+      </view>
+    </view>
+  </view>
+</view>
