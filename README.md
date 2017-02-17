@@ -85,10 +85,16 @@
 ###将sdk引入到微信小程序中
 ----------
 1. 将`utils`目录下`bmob.js`,`underscore.js` 复制至项目中utils目录下
-2. App.js 初始化SDK`
-var Bmob = require('utils/bmob.js');`
-`
-Bmob.initialize("4195da08a4bfe3814a4284de579fd8c0", "f0fd39c21b7ffab76c530eb5d63b3415");`
+2. App.js 初始化SDK
+
+
+		var Bmob = require('utils/bmob.js');  
+		Bmob.initialize("4195da08a4bfe3814a4284de579fd8c0", "f0fd39c21b7ffab76c530eb5d63b3415");
+
+3. 建立diary表创建title，content字段
+
+>如果不想用自己的应用，可以登录演示应用账号 `zhongguovu@gmail.com` 密码：`123456`
+
 
 ###`DEMO` 数据查询简单示例
 ----------
