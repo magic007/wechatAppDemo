@@ -19,7 +19,7 @@ Page({
         })
     },
     sendSms: function (event) {
-var that = this
+        var that = this
         var phone = event.detail.value.phone;
         Bmob.Sms.requestSmsCode({ "mobilePhoneNumber": phone }).then(function (obj) {
             that.setData({
@@ -41,7 +41,7 @@ var that = this
         } else if (!verifyCode) {
             common.showTip('请输入验证码');
             return false;
-        }        
+        }
 
         Bmob.Sms.verifySmsCode(phone, verifyCode).then(function (obj) {
             common.showTip('验证成功' + "smsId:" + obj.msg);

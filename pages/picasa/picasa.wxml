@@ -9,7 +9,12 @@
       </loading>
       <button type="primary" bindtap="upImg">图片上传</button>
       <image class="userinfo-avatar" src="{{url}}" background-size="cover"></image>
-       <view><text>返回地址：{{url}}</text></view> 
+      <view>
+        <text>返回地址：{{url}}</text>
+      </view>
+      <view>
+        <button type="primary" bindtap="delImg">文件删除</button>
+      </view>
     </view>
   </view>
   <template is="foot" />

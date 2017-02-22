@@ -2807,6 +2807,8 @@
         }
     };
 
+
+
     Bmob.File.prototype = {
 
         /**
@@ -2921,6 +2923,31 @@
             }
             return self._previousSave._thenRunCallbacks(options);
         }
+    };
+
+
+    /**
+   * 包含push的函数
+   * @name Bmob.Push
+   * @namespace 推送消息
+   */
+    Bmob.Files = Bmob.Files || {};
+
+
+    Bmob.Files.del = function (urls, options) {
+        var _url = urls.split(".com");
+        if (!_url) {
+            return Bmob.Promise.error('The file url and cdn is not eixsts.')._thenRunCallbacks(options);
+        }
+
+        var data = {
+            _ContentType: "application/json",
+            // url:_url,           
+        };
+        var request = Bmob._request("2/files/upyun", _url[1], null, 'DELETE', data);
+        return request.then(function (resp) {
+            return Bmob._decode(null, resp);
+        })._thenRunCallbacks(options);
     };
 
     /**
@@ -5193,13 +5220,18 @@
                 if (makeCurrent || this.isCurrent()) {
                     Bmob.User._saveCurrentUser(this);
                 }
+
             },
 
-            /**
-         * Unlike in the Android/iOS SDKs, logInWith is unnecessary, since you can
-         * call linkWith on the user (even if it doesn't exist yet on the server).
-         */
-            _linkWith: function (provider, options) {
+
+             /**
+             * 使用第三方登录，登录或注册
+             * @Magic 2.0.0
+             * @return {Bmob.User}
+             */
+            _linkWith: function _linkWith(provider, data) {
+                var _this = this;
+
                 var authType;
                 if (_.isString(provider)) {
                     authType = provider;
@@ -5207,46 +5239,73 @@
                 } else {
                     authType = provider.getAuthType();
                 }
-                if (_.has(options, 'authData')) {
+                if (data) {
                     var authData = this.get('authData') || {};
-                    authData[authType] = options.authData;
+                    authData[authType] = data;
                     this.set('authData', authData);
 
+                    var promise = new Bmob.Promise();
+                    this.save({
+                        'authData': authData
+                    },newOptions).then(
+                        function (model) {
+                            model._handleSaveResult(true);
+                            promise.resolve(model);
+                        }
+                        );
+
+
+                    return promise._thenRunCallbacks({});
+
                     // Overridden so that the user can be made the current user.
-                    var newOptions = _.clone(options) || {};
+                    var newOptions = _.clone(data) || {};
                     newOptions.success = function (model) {
                         model._handleSaveResult(true);
-                        if (options.success) {
-                            options.success.apply(this, arguments);
+                        if (data.success) {
+                            data.success.apply(this, arguments);
                         }
                     };
+                   
                     return this.save({
                         'authData': authData
                     },
                         newOptions);
                 } else {
-                    var self = this;
-                    var promise = new Bmob.Promise();
-                    provider.authenticate({
-                        success: function (provider, result) {
-                            self._linkWith(provider, {
-                                authData: result,
-                                success: options.success,
-                                error: options.error
-                            }).then(function () {
-                                promise.resolve(self);
-                            });
-                        },
-                        error: function (provider, error) {
-                            if (options.error) {
-                                options.error(self, error);
-                            }
-                            promise.reject(error);
-                        }
+                    return provider.authenticate().then(function (result) {
+                        return _this._linkWith(provider, result);
                     });
-                    return promise;
                 }
             },
+
+            /**
+             * 使用当前使用小程序的微信用户身份注册或登录，成功后用户的 session 会在设备上持久化保存，之后可以使用 Bmob.User.current() 获取当前登录用户。
+             * @Magic 2.0.0
+             * @return {Bmob.User}
+             */
+            loginWithWeapp: function (code) {
+                var that = this;
+                var promise = new Bmob.Promise();
+                Bmob.User.requestOpenId(code, {
+                    success: function (authData) {//获取授权成功
+                        var platform = "weapp";
+                        var user = Bmob.Object._create("_User");
+                        user._linkWith(platform, authData).then(function (resp) {
+                            promise.resolve(resp);
+                        }, function (error) {
+                            promise.reject(error);
+                        });
+
+                    },
+                    error: function (error) {
+                        promise.reject(error);
+                    }
+                }
+
+                );
+                return promise._thenRunCallbacks({});
+
+            },
+
 
             /**
          * Unlinks a user from a service.
@@ -6939,45 +6998,45 @@
   */
     Bmob.Pay = Bmob.Pay || {};
 
-    _.extend(Bmob.Pay, /** @lends Bmob.Cloud */ 
-    {
+    _.extend(Bmob.Pay, /** @lends Bmob.Cloud */
+        {
 
-        /**
-         * 网页端调起小程序支付接口
-         * @param {float} 价格
-         * @param {String} 商品名称    
-         * @param {String} 描述
-         * @param {String} OPEN ID          
-         * @param {Object} options  -style options 对象。
-         * options.success, 如果设置了，将会处理云端代码调用成功的情况。  options.error 如果设置了，将会处理云端代码调用失败的情况。  两个函数都是可选的。两个函数都只有一个参数。
-         * @return {Bmob.Promise} A promise 将会处理云端代码调用的情况。
-         */
-        wechatPay: function (price, product_name, body,openid, options) {
-            var data = { "order_price": price, "product_name": product_name, "body": body, "open_id": openid, "pay_type": 4 }
-            var request = Bmob._request("pay", null, null, 'POST',
-                Bmob._encode(data, null, true));
+            /**
+             * 网页端调起小程序支付接口
+             * @param {float} 价格
+             * @param {String} 商品名称    
+             * @param {String} 描述
+             * @param {String} OPEN ID          
+             * @param {Object} options  -style options 对象。
+             * options.success, 如果设置了，将会处理云端代码调用成功的情况。  options.error 如果设置了，将会处理云端代码调用失败的情况。  两个函数都是可选的。两个函数都只有一个参数。
+             * @return {Bmob.Promise} A promise 将会处理云端代码调用的情况。
+             */
+            wechatPay: function (price, product_name, body, openid, options) {
+                var data = { "order_price": price, "product_name": product_name, "body": body, "open_id": openid, "pay_type": 4 }
+                var request = Bmob._request("pay", null, null, 'POST',
+                    Bmob._encode(data, null, true));
 
-            return request.then(function (resp) {
-                return Bmob._decode(null, resp);
-            })._thenRunCallbacks(options);
-        },
+                return request.then(function (resp) {
+                    return Bmob._decode(null, resp);
+                })._thenRunCallbacks(options);
+            },
 
-        /**
-         * 查询订单
-         * @param {String} 订单id        
-         * @param {Object} options  Backbone-style options 对象。
-         * options.success, 如果设置了，将会处理云端代码调用成功的情况。  options.error 如果设置了，将会处理云端代码调用失败的情况。  两个函数都是可选的。两个函数都只有一个参数。
-         * @return {Bmob.Promise} A promise 将会处理云端代码调用的情况。
-         */
-        queryOrder: function (orderId, options) {
+            /**
+             * 查询订单
+             * @param {String} 订单id        
+             * @param {Object} options  Backbone-style options 对象。
+             * options.success, 如果设置了，将会处理云端代码调用成功的情况。  options.error 如果设置了，将会处理云端代码调用失败的情况。  两个函数都是可选的。两个函数都只有一个参数。
+             * @return {Bmob.Promise} A promise 将会处理云端代码调用的情况。
+             */
+            queryOrder: function (orderId, options) {
 
-            var request = Bmob._request("pay/" + orderId, null, null, 'GET',
-                null);
-            return request.then(function (resp) {
-                return Bmob._decode(null, resp);
-            })._thenRunCallbacks(options);
-        }
-    });
+                var request = Bmob._request("pay/" + orderId, null, null, 'GET',
+                    null);
+                return request.then(function (resp) {
+                    return Bmob._decode(null, resp);
+                })._thenRunCallbacks(options);
+            }
+        });
 
 
 

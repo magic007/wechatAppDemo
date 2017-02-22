@@ -6,27 +6,81 @@ Bmob.initialize("4195da08a4bfe3814a4284de579fd8c0", "f0fd39c21b7ffab76c530eb5d63
 // Bmob.initialize("e98d77118557b0014b19af3226ed950b", "7d0004dc751a05754a6dd755b1fc5931"); //本地
 App({ 
   onLaunch: function () {
-      //    wx.login({
-      //     success: function(res) {
-      //         if (res.code) {
-      //             //发起网络请求
-      //             console.log(res.code)
+    var user = new Bmob.User();//开始注册用户
 
-      //             //reset password
-      //             Bmob.User.requestOpenId(res.code, {
-      //                 success: function(result) {
-      //                     console.log(result)                         
-      //                 },
-      //                 error: function(error) {
-      //                     // Show the error message somewhere
-      //                     console.log("Error: " + error.code + " " + error.message);
-      //                 }
-      //             });
-      //         } else {
-      //             console.log('获取用户登录态失败！' + res.errMsg)
-      //         }
-      //     }
-      // });
+     
+      var newOpenid = wx.getStorageSync('openid')
+      if (!newOpenid) {
+
+        wx.getUserInfo({
+          success: function (result) {
+
+            var userInfo = result.userInfo;
+            var nickName = userInfo.nickName;
+            var avatarUrl = userInfo.avatarUrl;
+
+
+            wx.login({
+              success: function (res) {
+                user.loginWithWeapp(res.code).then(function (user) {
+                  var openid = user.get("authData").weapp.openid;
+                  console.log(user, 'user', user.id, res);
+
+                  if (user.get("nickName")) {
+                    // 第二次访问
+                    console.log(user.get("nickName"), 'res.get("nickName")');                 
+
+                    wx.setStorageSync('openid', openid)
+                  } else {
+
+                    var u = Bmob.Object.extend("_User");
+                    var query = new Bmob.Query(u);
+                    query.get(user.id, {
+                      success: function (result) {
+                        wx.setStorageSync('own', result.get("uid"));
+                      },
+                      error: function (result, error) {
+                        console.log("查询失败");
+                      }
+                    });
+
+
+                  }
+
+
+
+                  var u = Bmob.Object.extend("_User");
+                  var query = new Bmob.Query(u);
+                  // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
+                  query.get(user.id, {
+                    success: function (result) {
+                      // 自动绑定之前的账号
+
+                      result.set('nickName', nickName);
+                      result.set("userPic", avatarUrl);
+                      result.set("openid", openid);
+                      result.save();
+
+                    }
+                  });
+
+
+
+
+                  //下面这块代码主要是兼容本系统之前的老用户
+                }, function (err) {
+                  console.log(err, 'errr');
+                });
+
+              }
+            });
+
+          }
+        });
+
+      }
+
+
   },
   getUserInfo:function(cb){
     var that = this
