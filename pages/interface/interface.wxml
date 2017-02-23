@@ -4,6 +4,9 @@
   <template is="head" data="{{title: 'navigator'}}" />
   <view class="page-body">
     <view class="btn-area">
+      <navigator hover-class="navigator-hover">
+        <button bindtap="autuLogin" type="default">微信自动登录</button>
+      </navigator>
       <navigator url="../picasa/picasa" hover-class="navigator-hover">
         <button type="default">图片上传</button>
       </navigator>

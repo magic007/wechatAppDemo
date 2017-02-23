@@ -15,6 +15,9 @@ Page({
                 userInfo: userInfo
             })
         })
-    } 
+    },
+    autuLogin:function(){
+        common.showModal("App.js实现小程序访问则将数据写入系统User表，具体代码请查看App.js。")
+    }
 
 })
