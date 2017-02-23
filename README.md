@@ -8,6 +8,13 @@
 
 ![](http://i.imgur.com/oiT4RBe.gif)![](http://i.imgur.com/ReFyRhm.gif)
 
+
+#### <i class="icon-file"></i> 版本 v1.1.0
+> **Note:**
+> 
+> - 增加新登录接口，使用请看app.js
+> - 增加新图片删除接口，使用请看接口图片上传
+
 #### <i class="icon-file"></i> 版本 v1.0.0
 > **Note:**
 > 

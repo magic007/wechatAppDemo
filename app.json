@@ -10,10 +10,10 @@
     "pages/getOpenId/getOpenId",
     
     "pages/register/register",
+ "pages/picasa/picasa",
+    "pages/pay/pay"
 
-    "pages/pay/pay",
-
-    "pages/picasa/picasa"
+   
 
     
   ],
