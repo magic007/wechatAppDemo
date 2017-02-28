@@ -1,25 +1,29 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
-<view class="container">
-  <template is="head" data="{{title: 'navigator'}}" />
-  <view class="page-body">
-    <view class="btn-area">
-      <navigator hover-class="navigator-hover">
-        <button bindtap="autuLogin" type="default">微信自动登录</button>
-      </navigator>
-      <navigator url="../picasa/picasa" hover-class="navigator-hover">
-        <button type="default">图片上传</button>
-      </navigator>
-      <navigator url="../sendSms/sendSms" hover-class="navigator-hover">
-        <button type="default">发送短信</button>
-      </navigator>
-      <navigator url="../getOpenId/getOpenId" hover-class="navigator-hover">
-        <button type="default">获取openId</button>
-      </navigator>
-      <navigator url="../pay/pay" hover-class="navigator-hover">
-        <button type="default">微信支付</button>
-      </navigator>
+<import src="../../style/footer.wxml" />
+<view class="page">
+ <view class="page__hd i-header"> 
+
+       <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+       <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
     </view>
-  </view>
-  <template is="foot" />
+    <!--<view class="page__hd">      
+        <view class="page__title">常用接口</view>
+        <view class="page__desc">九宫格</view>
+    </view>-->
+    <view class="page__bd">
+        <view class="weui-grids">
+
+            <block wx:for-items="{{grids}}" wx:key="{{index}}">
+            
+                <navigator bindtap="{{item.click}}" class="weui-grid"  wx:if="{{item.click}}" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="../../../image/{{item.ico}}" />
+                    <view class="weui-grid__label">{{item.name}}</view>
+                </navigator>
+                <navigator url="{{item.url}}" class="weui-grid"  wx:if="{{!item.click}}" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="../../../image/{{item.ico}}" />
+                    <view class="weui-grid__label">{{item.name}}</view>
+                </navigator>
+            </block>
+        </view>
+    </view>
+    <template is="foot" />
 </view>

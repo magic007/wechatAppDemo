@@ -1,45 +1,41 @@
 {
   "pages": [
-    
+    "pages/interface/code/code",
     "pages/index/index",
-    "pages/sendSms/sendSms",
-    "pages/interface/interface",
     "pages/account/account",
+    "pages/account/feedback/feedback",
+    "pages/interface/interface",
     
+    "pages/sendSms/sendSms",
     "pages/login/login",
     "pages/getOpenId/getOpenId",
-    
     "pages/register/register",
- "pages/picasa/picasa",
+    "pages/picasa/picasa",
     "pages/pay/pay"
-
-   
-
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Bmob-小程序Demo",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#3891f8",
+    "navigationBarTitleText": "增删改查-小程序Demo",
+    "navigationBarTextStyle": "#fff"
   },
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#3cc51f",
-    "borderStyle": "black",
+    "borderStyle": "#3891f8",
     "backgroundColor": "#ffffff",
     "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png",
-        "text": "日记管理"
-      },
       {
         "pagePath": "pages/interface/interface",
         "iconPath": "image/icon_API.png",
         "selectedIconPath": "image/icon_API_HL.png",
         "text": "常用接口"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
+        "text": "日记管理"
       },
       {
         "pagePath": "pages/account/account",

@@ -1,24 +1,25 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
-<view class="container">
-  <template is="head" data="{{title: 'navigator'}}" />
-  <view class="page-body">
-    <view class="index-hd">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <view class="index-desc">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。 </view>
+<import src="../../style/footer.wxml" />
+<view class="page">
+  <view class="page__hd i-header">
+    <view class="g-bd">
+      <view> </view>
+      <view class="g-bda">
+        <view bindtap="" class="g-bda-userinfo">
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+      </view>
     </view>
-    <view class="btn-area">
-      <navigator url="../login/login" hover-class="navigator-hover">
-        <button type="default">跳转登录</button>
-      </navigator>   
-      <navigator url="../register/register" hover-class="navigator-hover">
-        <button type="default">跳转注册</button>
-      </navigator>   
-      <navigator bindtap="logout" hover-class="navigator-hover">
-        <button type="default">退出Bmob</button>
-      </navigator>    
-    </view>
+  </view>
+  <view class="page__bd">
+  </view>
+  <view class="btn-area">
+    <navigator url="feedback/feedback" hover-class="navigator-hover">
+      <button type="default">反馈建议</button>
+    </navigator>
+     <navigator url="" bindtap="about" hover-class="navigator-hover">
+      <button type="default">关于本程序</button>
+    </navigator>
   </view>
   <template is="foot" />
 </view>

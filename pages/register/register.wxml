@@ -11,6 +11,7 @@
     <view class="section">
         <input placeholder="请重新输入您的密码" password name="accoutPswd1"/>
     </view>
+     <view class="index-desc">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。 </view>
     <view class="btn-area">
         <button formType="submit">注册</button>
         <button formType="reset">重置</button>

@@ -71,7 +71,7 @@
     };
 
     // Set the server for Bmob to talk to.
-    Bmob.serverURL = "https://api.bmob.cn";
+    Bmob.serverURL = "https://apitest.bmob.cn";
     Bmob.fileURL = "http://file.bmob.cn";
 
     // Check whether we are running in Node.js.
@@ -5224,11 +5224,11 @@
             },
 
 
-             /**
-             * 使用第三方登录，登录或注册
-             * @Magic 2.0.0
-             * @return {Bmob.User}
-             */
+            /**
+            * 使用第三方登录，登录或注册
+            * @Magic 2.0.0
+            * @return {Bmob.User}
+            */
             _linkWith: function _linkWith(provider, data) {
                 var _this = this;
 
@@ -5247,7 +5247,7 @@
                     var promise = new Bmob.Promise();
                     this.save({
                         'authData': authData
-                    },newOptions).then(
+                    }, newOptions).then(
                         function (model) {
                             model._handleSaveResult(true);
                             promise.resolve(model);
@@ -5265,7 +5265,7 @@
                             data.success.apply(this, arguments);
                         }
                     };
-                   
+
                     return this.save({
                         'authData': authData
                     },
@@ -6923,6 +6923,23 @@
 
             }
         });
+
+    /**
+* @namespace 生成二维码
+*/
+    Bmob.generateCode = Bmob.generateCode || {};
+
+
+
+    Bmob.generateCode = function (data, options) {
+        var request = Bmob._request("wechatApp/qr/generatecode", null, null, 'POST', Bmob._encode(data, null, true));
+        return request.then(function (resp) {
+            return Bmob._decode(null, resp);
+        })._thenRunCallbacks(options);
+
+    }
+
+
 
     /**
    * @namespace 处理短信的函数

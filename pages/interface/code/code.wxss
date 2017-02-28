@@ -1,0 +1,5 @@
+.section{border:1px solid #ccc;margin:10px auto;width:80%;font-size:14px;}
+.section input{padding-left:15px;}
+.btn-area{width:80%;margin:0 auto;display:flex;}
+.btn-area button{flex:1;max-width:40%;font-size:14px;}
+.reg{width:100%;text-align:center;margin-top:10px;font-size:14px;color:dodgerblue;}

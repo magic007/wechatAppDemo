@@ -1,0 +1,40 @@
+<import src="../../style/footer.wxml" />
+<view class="page">
+  <view class="page__hd i-header">
+    <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+    <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+  </view>
+  <view class="page__bd">
+    <form bindsubmit="formSubmit">
+      <view class="weui-cells__title">表单</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">链接地址</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="path" value="pages/index?query=5" placeholder="请输入链接地址" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells__title">二维码尺寸</view>
+      <view class="page__bd page__bd_spacing">
+        <slider show-value value="430" name="width" min="30" max="600" />
+      </view>
+      <view class="weui-cells__title">链接地址 "pages/index?query=1"</view>
+      <button class="weui-btn" form-type="submit" type="primary">生成二维码</button>
+    </form>
+  </view>
+  <template is="foot" />
+</view>
+<view class="js_dialog" id="iosDialog2" style="opacity: 1;display:none;" >
+  <view class="weui-mask"></view>
+  <view class="weui-dialog">
+    <view class="weui-dialog__bd">
+      <image class="weui-grid__icon" src="../../../../image/sms.png" />
+    </view>
+    <view class="weui-dialog__ft">
+      <view class="weui-dialog__btn weui-dialog__btn_primary">知道了</view> 
+    </view>
+  </view>
+</view>
