@@ -1,3 +1,8 @@
+ <view class="page__hd i-header"> 
+
+       <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+       <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+    </view>
 <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="section">
         <input placeholder="请输入您的账户名" name="username"/>

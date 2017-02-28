@@ -7,7 +7,7 @@ var grids = [
    {"name":"微信自动登录","ico":"autologin.png","url":"../sendSms/sendSms","click":"autuLogin"},
    {"name":"获取openid","ico":"openid.png","url":"../getOpenId/getOpenId"},
    {"name":"微信支付","ico":"pay.png","url":"../pay/pay"},
-   {"name":"生成二维码","ico":"code.png","url":"../pay/pay"},
+   {"name":"生成二维码","ico":"code.png","url":"code/code"},
    {"name":"登录","ico":"login.png","url":"../login/login"},
    {"name":"注册","ico":"reg.png","url":"../register/register"},
    {"name":"退出","ico":"logout.png","url":"../logout/logout"},

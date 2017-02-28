@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/interface/code/code",
+    
     "pages/index/index",
     "pages/account/account",
     "pages/account/feedback/feedback",
     "pages/interface/interface",
+    "pages/interface/code/code",
     
     "pages/sendSms/sendSms",
     "pages/login/login",
@@ -21,7 +22,7 @@
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#318efb",
     "borderStyle": "#3891f8",
     "backgroundColor": "#ffffff",
     "list": [
