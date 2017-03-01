@@ -27,14 +27,14 @@
   </view>
   <template is="foot" />
 </view>
-<view class="js_dialog" id="iosDialog2" style="opacity: 1;display:none;" >
+<view class="js_dialog" id="iosDialog2" style="opacity: 1;" wx:if="{{imageBytes}}" >
   <view class="weui-mask"></view>
   <view class="weui-dialog">
     <view class="weui-dialog__bd">
-      <image class="weui-grid__icon" src="../../../../image/sms.png" />
+      <image class="weui-code" src="data:image/png;base64,{{imageBytes}}" />
     </view>
     <view class="weui-dialog__ft">
-      <view class="weui-dialog__btn weui-dialog__btn_primary">知道了</view> 
+      <view bindtap="noneWindows" class="weui-dialog__btn weui-dialog__btn_primary">知道了</view> 
     </view>
   </view>
 </view>
