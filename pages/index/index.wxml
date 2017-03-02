@@ -1,5 +1,5 @@
 <import src="../../style/footer.wxml" />
-<view class="toWrite" bindtap="toAddDiary"></view>
+<image class="toWrite" bindtap="toAddDiary" src="/image/add.png"></image>
 <view class="page">
   <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
     <view class="page__bd">
@@ -26,11 +26,15 @@
         </view>
       </view>
     </view>
+    <view class="page__ft">
+      <view class="page__bd page__bd_spacing">
+        <view class="weui-footer ">
+          <view class="weui-footer__text">Copyright © 2013-2016 www.bmob.cn</view>
+        </view>
+      </view>
+    </view>
   </scroll-view>
 </view>
-
-
-
 <view class="js_dialog" id="androidDialog1" style="opacity: 1;" wx:if="{{writeDiary}}">
   <view class="weui-mask"></view>
   <view class="weui-dialog weui-skin_android">
@@ -80,7 +84,7 @@
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell">
             <view class="weui-cell__bd">
-              <textarea class="weui-textarea" name="content"  value="{{nowContent}}" placeholder="请输入日记内容" style="height: 3.3em" />
+              <textarea class="weui-textarea" name="content" value="{{nowContent}}" placeholder="请输入日记内容" style="height: 3.3em" />
               <view class="weui-textarea-counter">0/200</view>
             </view>
           </view>
@@ -93,29 +97,3 @@
     </form>
   </view>
 </view>
-
-
-
-<!--<view class="btn-area" style="margin-top:0px;">
-  <view class="add_layer" wx:if="{{writeDiary}}">
-    <form bindsubmit="addDiary">
-      <input placeholder="请输入标题" name="title" />
-      <textarea placeholder="请输入日记内容" name="content" />
-      <button loading="{{loading}}" formType="submit" type="primary" class="weui-btn" hover-class="other-button-hover"> 发布 </button>
-      <button type="defualt" bindtap="closeLayer"> 取消 </button>
-    </form>
-  </view>
-  <view class="add_layer" wx:if="{{modifyDiarys}}">
-    <form bindsubmit="modifyDiary">
-      <input placeholder="请输入标题" name="title" value="{{nowTitle}}" />
-      <textarea placeholder="请输入日记内容" name="content" value="{{nowContent}}" />
-      <button loading="{{loading}}" formType="submit" type="primary" class="weui-btn" hover-class="other-button-hover" hover-start-time="100"> 修改 </button>
-      <button type="defualt" bindtap="closeAddLayer"> 取消 </button>
-    </form>
-  </view>
-  <view class="page__bd page__bd_spacing">
-    <view class="weui-footer" style="margin:16rpx auto;">
-      <view class="weui-footer__text">Copyright © 2013-2016 www.bmob.cn</view>
-    </view>
-  </view>
-</view>-->

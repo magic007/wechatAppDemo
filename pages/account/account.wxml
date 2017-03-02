@@ -12,14 +12,30 @@
     </view>
   </view>
   <view class="page__bd">
+   <view class="weui-panel">
+            <view class="weui-panel__hd">账户中心</view>
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <navigator url="feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                            <view class="weui-cell__hd"><image src="/image/edit.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>反馈建议</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                        <navigator url=""  bindtap="about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                            <view class="weui-cell__hd"><image src="/image/help.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>关于本程序</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </navigator>
+                    </view>
+                </view>
+            </view>
+        </view>
   </view>
-  <view class="btn-area">
-    <navigator url="feedback/feedback" hover-class="navigator-hover">
-      <button type="default">反馈建议</button>
-    </navigator>
-     <navigator url="" bindtap="about" hover-class="navigator-hover">
-      <button type="default">关于本程序</button>
-    </navigator>
-  </view>
+
   <template is="foot" />
 </view>
