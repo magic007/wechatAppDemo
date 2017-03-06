@@ -1,5 +1,4 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
+<import src="../../style/footer.wxml" />
 <view class="container">
   <template is="head" data="{{title: 'navigator'}}" />
   <view class="page-body">

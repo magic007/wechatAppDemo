@@ -1,42 +1,43 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
+<import src="../../style/footer.wxml" />
 <view class="container">
-  <template is="head" data="{{title: 'navigator'}}" />
+  <template is="head" data="{{title: 'navigator'}}"  />
   <view class="page-body">
     <view class="btn-area">
-      <loading hidden="{{loading}}">
-        获取中...
-      </loading>
+      <loading hidden="{{loading}}">获取中...</loading>
       <view style="color:red;" wx:if="{{dataInfo}}">订单号：{{dataInfo.out_trade_no}}</view>
-      
-      <view><text>微信要求调试支付，小程序ID，支付商户ID，开发者微信三合一，缺一不可，调试支付请先在后台配置商户号与商户支付key</text></view> 
+      <view>
+        <text>微信要求调试支付，小程序ID，支付商户ID，开发者微信三合一，缺一不可，调试支付请先在后台配置商户号与商户支付key</text>
+      </view>
       <button type="primary" bindtap="pay">立即支付</button>
-      
-       <view><text>个别开发者小程序客户支付了费用，业务订单状态未变更，接口提供了返回开发者联系方式（QQ，微信，Email，电话）。为了提高用户体验，请大伙自觉把自己的联系方式公布在此页面</text></view> 
-
-       <view><text>QQ：{{dataInfo.appInfo.qq}}</text></view>
-       <view><text>微信：{{dataInfo.appInfo.weixin}}</text></view>
-       <view><text>Email：{{dataInfo.appInfo.email}}</text></view>
-       <view><text>手机：这里不公布</text></view>
+      <view>
+        <text>个别开发者小程序客户支付了费用，业务订单状态未变更，接口提供了返回开发者联系方式（QQ，微信，Email，电话）。为了提高用户体验，请大伙自觉把自己的联系方式公布在此页面</text>
+      </view>
+      <view>
+        <text>QQ：{{dataInfo.appInfo.qq}}</text>
+      </view>
+      <view>
+        <text>微信：{{dataInfo.appInfo.weixin}}</text>
+      </view>
+      <view>
+        <text>Email：{{dataInfo.appInfo.email}}</text>
+      </view>
+      <view>
+        <text>手机：这里不公布</text>
+      </view>
     </view>
-
     <view class="btn-area">
-    <form bindsubmit="verifyOrder" bindreset="formReset">
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__bd">
-            <input class="weui-input" value="" name="orderid" placeholder="输入订单号" />
+      <form bindsubmit="verifyOrder" bindreset="formReset">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+              <input class="weui-input" value="" name="orderid" placeholder="输入订单号"  />
+            </view>
           </view>
         </view>
-      </view>
-      <button type="primary" formType="submit">查询</button>
-
-      <view wx:if="{{PayResult}}">支付状态：{{PayResult.trade_state}}</view>
-       </form>
+        <button type="primary" formType="submit">查询</button>
+        <view wx:if="{{PayResult}}">支付状态：{{PayResult.trade_state}}</view>
+      </form>
     </view>
-
-
-
   </view>
-  <template is="foot" />
+  <template is="foot"  />
 </view>

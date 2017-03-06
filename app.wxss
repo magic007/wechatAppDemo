@@ -25,6 +25,9 @@ form{
 .tc{
   text-align: center;
 }
+.f12{
+  font-size: 12px;
+}
 
 /* page */
 .container {
@@ -137,9 +140,7 @@ form{
   padding-left: 0;
   padding-right: 0;
 }
-.page-section-ctn{
 
-}
 
 /* widget */
 .btn-area{

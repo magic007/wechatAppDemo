@@ -1,0 +1,4 @@
+*.ts
+jsconfig.json
+.wing/
+typings/

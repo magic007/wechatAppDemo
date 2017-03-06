@@ -1,18 +1,21 @@
- <view class="page__hd i-header"> 
-
-       <view class="i-header-h1 h50">无需再造小程序后端服务</view>
-       <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
-    </view>
+<import src="../../style/footer.wxml"  />
+<view class="page__hd i-header">
+    <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+    <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+</view>
 <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="section">
-        <input placeholder="请输入您的账户名" name="username"/>
+        <input placeholder="请输入您的账户名" name="username"  />
     </view>
     <view class="section">
-        <input placeholder="请输入您的密码" password name="paswd"/>
+        <input placeholder="请输入您的密码" password name="paswd"  />
     </view>
     <view class="btn-area">
         <button formType="submit">登录</button>
         <button formType="reset">重置</button>
     </view>
-    <view class="reg"><navigator url="../register/register"  hover-class="other-navigator-hover">如果没有账户，点击注册</navigator></view>
+    <view class="reg">
+        <navigator url="../register/register" hover-class="other-navigator-hover">如果没有账户，点击注册</navigator>
+    </view>
 </form>
+<template is="foot"  />

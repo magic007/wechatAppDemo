@@ -1,24 +1,25 @@
-<loading hidden="{{loading}}">
-  {{tips}}
-</loading>
- <view class="page__hd i-header"> 
+<import src="../../style/footer.wxml"  />
 
-       <view class="i-header-h1 h50">无需再造小程序后端服务</view>
-       <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
-    </view>
+<view class="page__hd i-header">
+    <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+    <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+</view>
 <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="section">
-        <input placeholder="请输入您的账户名" name="accoutName"/>
+        <input placeholder="请输入您的账户名" name="accoutName"  />
     </view>
     <view class="section">
-        <input placeholder="请输入您的密码" password name="accoutPswd"/>
+        <input placeholder="请输入您的密码" password name="accoutPswd"  />
     </view>
     <view class="section">
-        <input placeholder="请重新输入您的密码" password name="accoutPswd1"/>
+        <input placeholder="请重新输入您的密码" password name="accoutPswd1"  />
     </view>
-     <view class="index-desc">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。 </view>
+    <view class="btn-area">
+    <view class="index-desc f12">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。</view>
+    </view>
     <view class="btn-area">
         <button formType="submit">注册</button>
         <button formType="reset">重置</button>
     </view>
 </form>
+<template is="foot"  />
