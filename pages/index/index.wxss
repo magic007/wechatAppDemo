@@ -47,7 +47,8 @@ navigator{width:100%;height:40px;line-height:40px;background:#dadada;text-align:
 .toWrite {
 width:100rpx;
 height:100rpx;
-background:url(../../image/add.png) no-repeat;
+display: block;
+background:url("/image/add.png") no-repeat;
 padding:0;
 background-size:cover;
 position:fixed;
@@ -88,5 +89,8 @@ form .weui-dialog__bd:first-child {
   padding:0px 30rpx 1.7em;
   
 }
-
+.page__ft{
+      padding-top: 40px;
+    padding-bottom: 10px;
+}
 

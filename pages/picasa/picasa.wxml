@@ -1,5 +1,8 @@
-<import src="../../../common/head.wxml" />
-<import src="../../../common/foot.wxml" />
+<import src="../../style/footer.wxml" />
+<view class="page__hd i-header">
+  <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+  <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+</view>
 <view class="container">
   <template is="head" data="{{title: 'navigator'}}" />
   <view class="page-body">
@@ -7,10 +10,22 @@
       <loading hidden="{{loading}}">
         图片上传中...
       </loading>
-      <button type="primary" bindtap="upImg">图片上传</button>
-      <image class="userinfo-avatar" src="{{url}}" background-size="cover"></image>
-      <view>
-        <text>返回地址：{{url}}</text>
+      <button type="primary" bindtap="upImg">图片上传（支持多张）</button>
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">上传结果展示</view>
+        <view class="weui-panel__bd">
+          <block wx:for-items="{{urlArr}}" wx:key="{{index}}">
+            <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image class="weui-media-box__thumb" src="{{item.url}}" />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">数组值{{index}}</view>
+                <view class="weui-media-box__desc">{{item.url}}</view>
+              </view>
+            </navigator>
+          </block>
+        </view>
       </view>
       <view>
         <button type="primary" bindtap="delImg">文件删除</button>
