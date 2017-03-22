@@ -14,13 +14,14 @@
       <view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">上传结果展示</view>
         <view class="weui-panel__bd">
-          <block wx:for-items="{{urlArr}}" wx:key="{{index}}">
+          <!--<block wx:for-items="{{urlArr}}" wx:key="{{index}}">-->
+          <block wx:for-items="{{urlArr}}">
             <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
               <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
                 <image class="weui-media-box__thumb" src="{{item.url}}" />
               </view>
               <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                <view class="weui-media-box__title">数组值{{index}}</view>
+                <view class="weui-media-box__title">数组值</view>
                 <view class="weui-media-box__desc">{{item.url}}</view>
               </view>
             </navigator>
