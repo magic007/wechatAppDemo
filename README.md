@@ -10,6 +10,12 @@
 ![](http://i.imgur.com/0uHVr5W.gif)
 
 
+##个别开发者还未申请小程序，这里提供一个一些账户
+1. appkey：wx77d6b7031c1e4763
+![](http://i.imgur.com/UxKDqme.png)
+2. 登录演示应用账号 `zhongguovu@gmail.com` 密码：`123456`
+
+
 ##使用方法
 >###使用视频教程
 
@@ -29,7 +35,7 @@
 
 3. 建立diary表创建title，content字段
 
->如果不想用自己的应用，可以登录演示应用账号 `zhongguovu@gmail.com` 密码：`123456`
+
 
 
 ###`DEMO` 数据查询简单示例
@@ -60,6 +66,14 @@
 
 
 ----------
+
+#### <i class="icon-file"></i> 版本 v2.1.0
+> **Note:**
+> 
+> - 增加日记详细页面
+> - 修复小程序点击事件冒泡问题catchtap
+> - 首页增加模糊搜索
+> - 修复我发布的没显示bug
 
 #### <i class="icon-file"></i> 版本 v2.0.2
 > **Note:**

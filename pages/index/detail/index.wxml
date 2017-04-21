@@ -1,0 +1,31 @@
+<!--pages/index/detail/index.wxml-->
+<view class="page">
+  <view class="page__hd i-header">
+    <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+    <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+  </view>
+
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1"> {{rows.title}}</view>
+            <view class="weui-article__section">
+              
+
+                <view class="weui-article__section">
+                   
+                    <view class="weui-article__p">
+                       {{rows.content}}
+                    </view>
+                     <view class="weui-article__h3">创建时间：{{rows.createdAt}} </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="page__ft">
+      <view class="page__bd page__bd_spacing">
+        <view class="weui-footer ">
+          <view class="weui-footer__text">Copyright © 2013-2016 www.bmob.cn</view>
+        </view>
+      </view>
+    </view>
+</view>

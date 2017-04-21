@@ -25,7 +25,7 @@
             <view class="weui-media-box__desc">{{item.content}}</view>
             <view class="weui-media-box__info">
               <view class="weui-media-box__info__meta weui-media-time">时间：{{item.updatedAt}}</view>
-              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">来源:开发者</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">来源:{{item.own.nickName}}</view>
               <view class="weui-media-box__info__meta weui-media-box__info__operate">
                 <icon type="cancel" size="16"></icon>
                 <text class="del" bindtap="deleteDiary" data-id="{{item.objectId}}">删除</text>

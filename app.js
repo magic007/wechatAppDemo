@@ -23,19 +23,7 @@ App({
               wx.setStorageSync('openid', openid)
             } else {
 
-              var u = Bmob.Object.extend("_User");
-              var query = new Bmob.Query(u);
-              query.get(user.id, {
-                success: function (result) {
-                  wx.setStorageSync('own', result.get("uid"));
-                },
-                error: function (result, error) {
-                  console.log("查询失败");
-                }
-              });
-
-
-              //保存用户其他信息
+               //保存用户其他信息
               wx.getUserInfo({
                 success: function (result) {
 

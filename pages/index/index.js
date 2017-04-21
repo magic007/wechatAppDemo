@@ -25,24 +25,9 @@ Page({
         })
   },
   onShow: function () {
-    var Diary = Bmob.Object.extend("diary");
-    var query = new Bmob.Query(Diary);
-    query.descending('createdAt');
-    query.include("own")
-    // 查询所有数据
-    query.limit(that.data.limit);
-    query.find({
-      success: function (results) {
-        // 循环处理查询到的数据
-        console.log(results);
-        that.setData({
-          diaryList: results
-        })
-      },
-      error: function (error) {
-        console.log("查询失败: " + error.code + " " + error.message);
-      }
-    });
+    getList(this);
+
+
     wx.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -82,7 +67,7 @@ Page({
       var User = Bmob.Object.extend("_User");
       var UserModel = new User();
 
-      var post = Bmob.Object.createWithoutData("_User", "594fdde53c");
+      // var post = Bmob.Object.createWithoutData("_User", "594fdde53c");
 
       //增加日记
       var Diary = Bmob.Object.extend("diary");
@@ -90,8 +75,8 @@ Page({
       diary.set("title", title);
       diary.set("content", content);
       if (currentUser) {
-        UserModel.objectId = "594fdde53c"
-        diary.set("own", post);
+        UserModel.id = currentUser.id;
+        diary.set("own", UserModel);
       }
       //添加数据，第一个入口参数是null
       diary.save(null, {
@@ -155,7 +140,81 @@ Page({
     })
   },
   modifyDiary: function (e) {
-    //修改日记
+    var t=this;
+    modify(t,e)
+  },
+  showInput: function () {
+        this.setData({
+            inputShowed: true
+        });
+    },
+    hideInput: function () {
+        this.setData({
+            inputVal: "",
+            inputShowed: false
+        });
+        getList(this);
+    },
+    clearInput: function () {
+        this.setData({
+            inputVal: ""
+        });
+        getList(this);
+    },
+    inputTyping: function (e) {
+      //搜索数据
+      getList(this,e.detail.value);
+        this.setData({
+            inputVal: e.detail.value
+        });
+    },
+  closeAddLayer: function () {
+    that.setData({
+      modifyDiarys: false
+    })
+  }
+
+})
+
+
+/*
+* 获取数据
+*/
+function getList(t,k){
+   that = t;
+    var Diary = Bmob.Object.extend("diary");
+    var query = new Bmob.Query(Diary);
+
+    //会员模糊查询
+    if(k){
+      query.equalTo("title", {"$regex":""+k+".*"});
+      }
+
+     //普通会员匹配查询
+    // query.equalTo("title", k);
+
+
+    query.descending('createdAt');
+    query.include("own")
+    // 查询所有数据
+    query.limit(that.data.limit);
+    query.find({
+      success: function (results) {
+        // 循环处理查询到的数据
+        console.log(results);
+        that.setData({
+          diaryList: results
+        })
+      },
+      error: function (error) {
+        console.log("查询失败: " + error.code + " " + error.message);
+      }
+    });
+}
+
+function modify(t,e){
+  var that=t;
+//修改日记
     var modyTitle = e.detail.value.title;
     var modyContent = e.detail.value.content;
     var objectId = e.detail.value.content;
@@ -201,11 +260,4 @@ Page({
       })
       common.showTip('修改成功', 'loading');
     }
-  },
-  closeAddLayer: function () {
-    that.setData({
-      modifyDiarys: false
-    })
-  }
-
-})
+}

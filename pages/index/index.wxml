@@ -6,9 +6,31 @@
 
       <!--<button type="primary" bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>-->
       <view class="weui-panel">
+       <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+
+    
+
+
+
         <view class="weui-panel__hd">日记列表</view>
         <view class="weui-panel__bd">
-          <view class="weui-media-box weui-media-box_text" wx:for="{{diaryList}}" wx:key="diaryItem">
+<block wx:if="{{diaryList.length>0}}">
+          <navigator class="weui-media-box weui-media-box_text" wx:for="{{diaryList}}" wx:key="diaryItem" url="/pages/index/detail/index?objectId={{item.objectId}}">
             <view class="weui-media-box__title weui-media-box__title_in-text">
               {{item.title}}</view>
             <view class="weui-media-box__desc">{{item.content}}</view>
@@ -17,12 +39,22 @@
               <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">来源:开发者</view>
               <view class="weui-media-box__info__meta weui-media-box__info__operate">
                 <icon type="cancel" size="16"></icon>
-                <text class="del" bindtap="deleteDiary" data-id="{{item.objectId}}">删除</text>
+                <text class="del" catchtap="deleteDiary" data-id="{{item.objectId}}">删除</text>
                 <icon type="success" size="16"></icon>
-                <text bindtap="toModifyDiary" data-id="{{item.objectId}}" data-content="{{item.content}}" data-title="{{item.title}}">编辑</text>
+                <text catchtap="toModifyDiary" data-id="{{item.objectId}}" data-content="{{item.content}}" data-title="{{item.title}}">编辑</text>
               </view>
             </view>
+          </navigator>
+</block>
+<block wx:else>
+           <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">
+             暂无内容，请点击右下角添加</view>
+            <view class="weui-media-box__desc"></view>
+     
           </view>
+</block>
+
         </view>
       </view>
     </view>

@@ -220,8 +220,9 @@
         var dataObject = JSON.parse(data);
 
         var error;
-
+        wx.showNavigationBarLoading()
         if (dataObject.category == "wechatApp") {
+
             wx.uploadFile({
                 url: url,
                 filePath: dataObject.base64,
@@ -234,13 +235,16 @@
                     console.log(res);
                     var data = JSON.parse(res.data);
                     promise.resolve(data, res.statusCode, res);
+                    wx.hideNavigationBarLoading()
                 },
                 fail: function (e) {
                     console.log(e);
                     promise.reject(e);
+                    wx.hideNavigationBarLoading()
                 }
             });
         } else {
+           
             wx.request({
                 method: method,
                 url: url,
@@ -257,9 +261,11 @@
                     } else {
                         promise.resolve(res.data, res.statusCode, res);
                     }
+                    wx.hideNavigationBarLoading()
                 },
                 fail: function (e) {
                     promise.reject(e);
+                    wx.hideNavigationBarLoading()
                 }
             });
         }

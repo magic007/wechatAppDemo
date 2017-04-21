@@ -12,7 +12,7 @@ Page({
     windowWidth: 0,
     limit: 10,
     userInfo: 10,
-    diaryList: [],
+    diaryList: {},
     modifyDiarys: false
   },
   onLoad: function () {
@@ -37,7 +37,6 @@ Page({
   onShow: function () {
 
     var objectId;
-
     var currentUser = Bmob.User.current();
 
 
@@ -49,14 +48,18 @@ Page({
 
     query.equalTo("own", isme);
     query.descending('createdAt');
-    // query.include("own");
+    query.include("own");
 
     // 查询所有数据
     query.limit(that.data.limit);
     query.find({
       success: function (results) {
+        
         // 循环处理查询到的数据
-        console.log(results);
+        for(var r in results){
+            results[r].set("own",results[r].get("own").attributes);        
+        }      
+
         that.setData({
           diaryList: results
         })
