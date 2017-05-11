@@ -17,6 +17,14 @@ Page({
   onLoad: function () {
     that = this;
 
+    console.log('hello');
+    Bmob.Cloud.run('test').then(function (obj) {           
+            console.log(obj)
+        }, function (err) {
+           console.log(err)
+        });
+
+
   },
   noneWindows:function(){
     that.setData({
