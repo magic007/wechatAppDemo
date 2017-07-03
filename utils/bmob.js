@@ -102,6 +102,7 @@
         Bmob.applicationKey = applicationKey;
         Bmob.masterKey = masterKey;
         Bmob._useMasterKey = true;
+        Bmob.serverURL = "https://" + applicationId + ".bmobcloud.com";
     };
 
     if (Bmob._isNode) {
@@ -2788,7 +2789,14 @@
    * @param type {String} 文件的类型.
    */
     Bmob.File = function (name, data, type) {
+      var extension = /\.([^.]*)$/.exec(name);
+      if (extension == "mp4") {
+        data = data;
+      }
+      else {
         data = data[0];
+      }
+     
         this._name = name;
         // this._name = encodeBase64(utf16to8(name));
         var currentUser = Bmob.User.current();
@@ -2797,10 +2805,12 @@
         };
 
         // Guess the content type from the extension if we need to.
-        var extension = /\.([^.]*)$/.exec(name);
+        // var extension = /\.([^.]*)$/.exec(name);
         if (extension) {
             extension = extension[1].toLowerCase();
         }
+
+        console.log(extension);
         var guessedType = type || mimeTypes[extension] || "text/plain";
         this._guessedType = guessedType;
 
@@ -4175,7 +4185,24 @@
                 id = id + ',' + obj.id;
             }
         });
-        var request = Bmob._request("classes", className, id, 'DELETE');
+
+        var data = _.map(objects,
+          function (object) {
+            var json = object._getSaveJSON();
+            var method = "POST";
+
+            var path = "/1/classes/" + object.className;
+            if (object.id) {
+              path = path + "/" + object.id;
+              method = "DELETE";
+            }
+            object._startSave();
+            return {
+              method: method,
+              path: path,
+            };
+          })
+        var request = Bmob._request("batch", null, null, 'POST', {"requests":data});
         return request._thenRunCallbacks(options);
     };
 
@@ -6891,60 +6918,34 @@
    */
     Bmob.Router.extend = Bmob._extend;
 
-    /**
-   * @namespace 处理图片的函数
-   */
-    Bmob.Image = Bmob.Image || {};
-
-    _.extend(Bmob.Image,
-        /** @lends Bmob.Image */
-        {
-            /**
-         * 调用生成缩略图的函数。
-         * @param {Object} 相应的参数
-         * @param {Object} Backbone-style options 对象。 options.success, 如果设置了，将会处理云端代码调用成功的情况。 options.error 如果设置了，将会处理云端代码调用失败的情况。 两个函数都是可选的。两个函数都只有一个参数。
-         * @return {Bmob.Promise} 
-         */
-            thumbnail: function (data, options) {
-                var request = Bmob._request("images/thumbnail", null, null, 'POST', Bmob._encode(data, null, true));
-
-                return request.then(function (resp) {
-                    return resp;
-                });
-
-            },
-
-            /**
-         * 调用生成水印的函数。
-         * @param {Object} 相应的参数
-         * @param {Object} Backbone-style options 对象。 options.success, 如果设置了，将会处理云端代码调用成功的情况。 options.error 如果设置了，将会处理云端代码调用失败的情况。 两个函数都是可选的。两个函数都只有一个参数。
-         * @return {Bmob.Promise} 
-         */
-            watermark: function (data, options) {
-                var request = Bmob._request("images/watermark", null, null, 'POST', Bmob._encode(data, null, true));
-
-                return request.then(function (resp) {
-                    return resp;
-                });
-
-            }
-        });
+   
 
     /**
 * @namespace 生成二维码
 */
     Bmob.generateCode = Bmob.generateCode || {};
-
-
-
     Bmob.generateCode = function (data, options) {
-        var request = Bmob._request("wechatApp/qr/generatecode", null, null, 'POST', Bmob._encode(data, null, true));
+      var request = Bmob._request("wechatApp/qr/generatecode", null, null, 'POST', Bmob._encode(data, null, true));
         return request.then(function (resp) {
             return Bmob._decode(null, resp);
         })._thenRunCallbacks(options);
 
     }
 
+
+    /**
+    * @namespace 发送模板消息
+    */
+    Bmob.sendMessage = Bmob.sendMessage || {};
+    Bmob.sendMessage = function (data, options) {
+     
+      var request = Bmob._request("wechatApp/SendWeAppMessage", null, null, 'POST', Bmob._encode(data, null, true));
+
+      return request.then(function (resp) {
+        return Bmob._decode(null, resp);
+      })._thenRunCallbacks(options);
+
+    }
 
 
     /**

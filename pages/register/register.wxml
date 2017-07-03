@@ -1,25 +1,67 @@
-<import src="../../style/footer.wxml"  />
+<import src="../../style/footer.wxml" />
 
-<view class="page__hd i-header">
-    <view class="i-header-h1 h50">无需再造小程序后端服务</view>
-    <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+<view class="page__bd">
+    <view class="page__hd i-header">
+        <view class="i-header-h1 h50">无需再造小程序后端服务</view>
+        <view class="i-header-h1">轻松拥有开发中需要的各种后端能力</view>
+    </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+        <view class="weui-cells__title">账户密码注册</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">用户名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的账户名" name="accoutName" />
+                </view>
+            </view>
+
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入您的密码" password name="accoutPswd" />
+                </view>
+            </view>
+
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">密码</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请重新输入密码" password name="accoutPswd1" />
+                </view>
+                <view class="weui-cell__ft">
+
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__tips">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。</view>
+
+
+
+        <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree" for="weuiAgree">
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    阅读并同意<navigator url="" class="weui-agree__link">《相关条款》</navigator>
+                </view>
+            </label>
+        </checkbox-group>
+
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" formType="submit" bindtap="showTopTips">确定</button>
+        </view>
+    </form>
 </view>
-<form bindsubmit="formSubmit" bindreset="formReset">
-    <view class="section">
-        <input placeholder="请输入您的账户名" name="accoutName"  />
-    </view>
-    <view class="section">
-        <input placeholder="请输入您的密码" password name="accoutPswd"  />
-    </view>
-    <view class="section">
-        <input placeholder="请重新输入您的密码" password name="accoutPswd1"  />
-    </view>
-    <view class="btn-area">
-    <view class="index-desc f12">如果需要迁移之前的App或会员数据，下面提供了登录注册接口，平台之前的老会员可以使用之前的账号登录，此程序只是个示例，具体属性参数详见小程序开发文档。</view>
-    </view>
-    <view class="btn-area">
-        <button formType="submit">注册</button>
-        <button formType="reset">重置</button>
-    </view>
-</form>
-<template is="foot"  />
+
+
+<template is="foot" />

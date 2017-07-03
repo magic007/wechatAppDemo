@@ -11,9 +11,6 @@ Page({
         // 页面初始化 options为页面跳转所带来的参数
 
 
-
-
-
     },
     onReady: function () {
         // 页面渲染完成
@@ -25,11 +22,11 @@ Page({
         // 页面隐藏
     },
     formSubmit: function (event) {
-        Bmob.User.logOut();
-        that.setData({
-            loading: false,
-            tips: "用户注册中，请稍后！"
+
+        wx.showLoading({
+            title: '用户注册中，请稍后！',
         })
+
         var accoutPswd = event.detail.value.accoutPswd;
         var accoutPswd1 = event.detail.value.accoutPswd1;
         var accoutName = event.detail.value.accoutName;
@@ -42,6 +39,7 @@ Page({
                     that.setData({
                         loading: true,
                     })
+                    wx.hideLoading()
                     common.showTip("注册成功请登录", "success", function () {
                         wx.redirectTo({
                             url: '../login/login'
@@ -83,6 +81,12 @@ Page({
             });
         }
         else {
+            wx.showLoading({
+                title: '信息填写错误！',
+            })
+            setTimeout(function () {
+                wx.hideLoading()
+            }, 2000)
             console.log("信息填写错误")
         }
 

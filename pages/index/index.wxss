@@ -48,7 +48,7 @@
 width:100rpx;
 height:100rpx;
 display: block;
-background:url("/image/add.png") no-repeat;
+/*background:url("/image/add.png") no-repeat;*/
 padding:0;
 background-size:cover;
 position:fixed;

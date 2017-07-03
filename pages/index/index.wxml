@@ -23,7 +23,7 @@
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
         </view>
 
-    
+
 
 
 
@@ -51,7 +51,7 @@
             <view class="weui-media-box__title weui-media-box__title_in-text">
              暂无内容，请点击右下角添加</view>
             <view class="weui-media-box__desc"></view>
-     
+
           </view>
 </block>
 
@@ -71,7 +71,7 @@
   <view class="weui-mask"></view>
   <view class="weui-dialog weui-skin_android">
     <view class="weui-dialog__hd"><strong class="weui-dialog__title">添加日记</strong>  </view>
-    <form bindsubmit="addDiary">
+    <form bindsubmit="addDiary" report-submit="true">
       <view class="weui-dialog__bd">
         <view class="weui-cells__title">标题</view>
         <view class="weui-cells weui-cells_after-title">

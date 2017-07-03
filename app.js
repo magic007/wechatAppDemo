@@ -4,6 +4,10 @@ Bmob.initialize("4195da08a4bfe3814a4284de579fd8c0", "f0fd39c21b7ffab76c530eb5d63
 
 App({
   onLaunch: function () {
+
+
+ 
+
     var user = new Bmob.User();//开始注册用户
 
     var newOpenid = wx.getStorageSync('openid')
