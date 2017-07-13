@@ -55,10 +55,7 @@ Page({
     query.find({
       success: function (results) {
         
-        // 循环处理查询到的数据
-        for(var r in results){
-            results[r].set("own",results[r].get("own").attributes);        
-        }      
+
 
         that.setData({
           diaryList: results

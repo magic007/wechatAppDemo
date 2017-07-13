@@ -67,6 +67,12 @@
 
 ----------
 
+#### <i class="icon-file"></i> 版本 v3.1.0
+> **Note:**
+> 
+> - 模板调用图片，支持链试调用。 例如： obj.pic.url 
+> - 连表查询，不在需要重写对象。支持链试调用。  obj.user.nickname
+
 #### <i class="icon-file"></i> 版本 v3.0.0
 > **Note:**
 > 

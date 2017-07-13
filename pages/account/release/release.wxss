@@ -1,4 +1,4 @@
-/**index.wxss**/
+/image/add.png/**index.wxss**/
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@ navigator{width:100%;height:40px;line-height:40px;background:#dadada;text-align:
 width:100rpx;
 height:100rpx;
 display: block;
-background:url("/image/add.png") no-repeat;
+
 padding:0;
 background-size:cover;
 position:fixed;

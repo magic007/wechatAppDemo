@@ -518,22 +518,20 @@
             return relation;
         }
         if (value.__type === "File") {
-            // var file = new Bmob.File(value.name);
-            // file._metaData = value.metaData || {};
-            // file._url = value.url;
-            // file.id = value.objectId;
             if (value.url != undefined && value.url != null) {
 
                 if (value.url.indexOf("http") >= 0) {
                     var file = {
                         "_name": value.filename,
                         "_url": value.url,
+                        "url": value.url,
                         "_group": value.group
                     };
                 } else {
                     var file = {
                         "_name": value.filename,
                         "_url": Bmob.fileURL + "/" + value.url,
+                        "url": value.url,
                         "_group": value.group
                     };
                 }
@@ -541,6 +539,7 @@
                 var file = {
                     "_name": value.filename,
                     "_url": value.url,
+                    "url": value.url,
                     "_group": value.group
                 };
             }
@@ -3375,7 +3374,11 @@
                 var self = this;
                 Bmob._objectEach(serverData,
                     function (value, key) {
+                      if (value.__type != "Object") {
                         self._serverData[key] = Bmob._decode(key, value);
+                      } else {
+                        self._serverData[key] = value;
+                      }
                     });
 
                 // Refresh the attributes.
