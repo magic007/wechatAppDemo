@@ -15,6 +15,9 @@ Page({
     diaryList: [],
     modifyDiarys: false
   },
+  onReady: function (e) {
+
+  },
   onShareAppMessage: function () {
     return {
       title: '自定义转发标题',
@@ -61,14 +64,19 @@ Page({
     }
   },
   onLoad: function () {
+
+   
     that = this;
 
     wx.showShareMenu({
       withShareTicket: true //要求小程序返回分享目标信息
     })
 
-  
+    var k ='http://bmob-cdn-12917.b0.upaiyun.com/2017/07/18/d99d3bb7400cb1ed808f34896bff6fcc.jpg';
+
+    var newUrl = k.replace("http://bmob-cdn-12917.b0.upaiyun.com","https://bmob-cdn-12917.bmobcloud.com")
     
+    console.log(newUrl);
 
     //批量更新数据
     // var query = new Bmob.Query('diary');
@@ -92,6 +100,7 @@ Page({
     })
   },
   onShow: function () {
+
     getList(this);
 
 
@@ -219,7 +228,7 @@ Page({
   deleteDiary: function (event) {
 
    
-
+var that =this;
   
   
 
@@ -231,31 +240,35 @@ Page({
         if (res.confirm) {
           //删除日记
           var Diary = Bmob.Object.extend("diary");
-
-
-
-          var query = new Bmob.Query('diary');
-          query.find().then(function (todos) {
-            return Bmob.Object.destroyAll(todos);
-          }).then(function (todos) {
-            console.log(todos);
-            // 更新成功
-          }, function (error) {
-            // 异常处理
-          });
+          // var query = new Bmob.Query('diary');
+          // query.find().then(function (todos) {
+          //   return Bmob.Object.destroyAll(todos);
+          // }).then(function (todos) {
+          //   console.log(todos);
+          //   // 更新成功
+          // }, function (error) {
+          //   // 异常处理
+          // });
 
           //创建查询对象，入口参数是对象类的实例
-          // var query = new Bmob.Query(Diary);
-          // query.equalTo("objectId", objectId);
-          // query.destroyAll({
-          //   success: function () {
-          //     common.showTip('删除日记成功');
-          //     that.onShow();
-          //   },
-          //   error: function (err) {
-          //     common.showTip('删除日记失败', 'loading');
-          //   }
-          // });
+          var query = new Bmob.Query(Diary);
+          query.get(objectId, {
+            success: function (object) {
+              // The object was retrieved successfully.
+              object.destroy({
+                success: function (deleteObject) {
+                  console.log('删除日记成功');
+                  getList(that)
+                },
+                error: function (object, error) {
+                  console.log('删除日记失败');
+                }
+              });
+            },
+            error: function (object, error) {
+              console.log("query object fail");
+            }
+          });
         }
       }
     })

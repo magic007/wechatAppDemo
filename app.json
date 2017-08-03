@@ -1,11 +1,12 @@
 {
   "pages": [
-   
     "pages/index/index",
+    "pages/interface/chatroom/chatroom",
+    
     "pages/index/detail/index",
     "pages/account/account",
     "pages/account/feedback/feedback",
-     "pages/account/release/release",
+    "pages/account/release/release",
     "pages/interface/interface",
     "pages/interface/code/code",
     

@@ -17,7 +17,8 @@ Page({
         var path = event.detail.value.path;
         var width = event.detail.value.width;
         var that = this;
-        Bmob.generateCode({ "path": path, "width": width }).then(function (obj) {
+        // Bmob.generateCode({ "path": path, "width": width, "interface": "b",'scene':'dfd',"type":1}).then(function (obj) {
+        Bmob.generateCode({ "path": path, "width": width}).then(function (obj) {
             console.log(obj);
             that.setData({
                 imageBytes: obj.imageBytes
