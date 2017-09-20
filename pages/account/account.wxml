@@ -11,6 +11,7 @@
             </view>
         </view>
     </view>
+    
     <view class="page__bd">
         <view class="weui-panel">
             <view class="weui-panel__hd">账户中心</view>

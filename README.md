@@ -67,6 +67,12 @@
 
 ----------
 
+#### <i class="icon-file"></i> 版本 v3.3.0
+> **Note:**
+> - 增加主人通知接口
+> - 增加图文素材示例
+
+
 #### <i class="icon-file"></i> 版本 v3.2.0
 > **Note:**
 > - 增加webSocket通讯协议

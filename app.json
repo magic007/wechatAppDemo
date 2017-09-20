@@ -2,12 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
-    
+    "pages/interface/article/detail/index",
     "pages/index/detail/index",
     "pages/account/account",
     "pages/account/feedback/feedback",
     "pages/account/release/release",
     "pages/interface/interface",
+    "pages/interface/article/index",
     "pages/interface/code/code",
     
     "pages/sendSms/sendSms",
@@ -37,9 +38,15 @@
       },
       {
         "pagePath": "pages/index/index",
+        "iconPath": "image/list.png",
+        "selectedIconPath": "image/list1.png",
+        "text": "日记管理"
+      },
+      {
+        "pagePath": "pages/interface/article/index",
         "iconPath": "image/icon_component.png",
         "selectedIconPath": "image/icon_component_HL.png",
-        "text": "日记管理"
+        "text": "活动专题"
       },
       {
         "pagePath": "pages/account/account",

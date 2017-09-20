@@ -1,0 +1,23 @@
+<view class="page">
+  <view class='weui-form-item' wx:for="{{results}}">
+  <navigator url="detail/index?objectId={{item.objectId}}" hover-class="navigator-hover">
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">{{item.title}}</view>
+          <view class="weui-form-preview__value_in-hd">
+
+          </view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd weui-form-preview__img">
+        <image src='{{item.cover}}'></image>
+      </view>
+      <view class="weui-form-preview__hd">
+        <view class="">{{item.createdAt}}</view>
+      </view>
+    </view>
+     </navigator>
+  </view>
+
+</view>

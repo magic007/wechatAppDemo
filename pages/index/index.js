@@ -170,42 +170,77 @@ Page({
           var currentUser = Bmob.User.current();
 
           //成功后发送模板消息，这个只能在手机上测试，模拟器里面没有formid
-          var temp = {
-            "touser": currentUser.get("openid"),
-            "template_id": "B-2GcobfYnptevxY8G3SdA72YLYGZpOoJO_FEHlouWg",
-            "page": "",
-            "form_id": formId,
-            "data": {
-              "keyword1": {
-                "value": "SDK测试内容",
-                "color": "#173177"
+          // var temp = {
+          //   "touser": currentUser.get("openid"),
+          //   "template_id": "B-2GcobfYnptevxY8G3SdA72YLYGZpOoJO_FEHlouWg",
+          //   "page": "",
+          //   "form_id": formId,
+          //   "data": {
+          //     "keyword1": {
+          //       "value": "SDK测试内容",
+          //       "color": "#173177"
 
-              },
-              "keyword2": {
-                "value": "199.00"
-              },
-              "keyword3": {
-                "value": "123456789"
-              },
-              "keyword4": {
-                "value": "2015年01月05日 12:30"
-              }
-              ,
-              "keyword5": {
-                "value": "恭喜您支付成功，如有疑问请反馈与我"
-              }
-            }
-            , "emphasis_keyword": "keyword1.DATA"
-          }
-          console.log(temp);
-          Bmob.sendMessage(temp).then(function (obj) {
-            console.log('发送成功');
+          //     },
+          //     "keyword2": {
+          //       "value": "199.00"
+          //     },
+          //     "keyword3": {
+          //       "value": "123456789"
+          //     },
+          //     "keyword4": {
+          //       "value": "2015年01月05日 12:30"
+          //     }
+          //     ,
+          //     "keyword5": {
+          //       "value": "恭喜您支付成功，如有疑问请反馈与我"
+          //     }
+          //   }
+          //   , "emphasis_keyword": "keyword1.DATA"
+          // }
+          // console.log(temp);
+          // Bmob.sendMessage(temp).then(function (obj) {
+          //   console.log('发送成功');
 
 
-          }, function (err) {
+          // }, function (err) {
 
-            common.showTip('失败' + err);
-          });
+          //   common.showTip('失败' + err);
+          // });
+
+
+          //成功后发送主人模板消息，这个只需把openid改正确即可接收到， Bmob后端云公众号回复openid 
+          // var temp = {
+          //   "touser": "oUxY3w_jURG89H5wCIvJDPjJ5s2o",
+          //   "template_id": "-ERkPwp0ntimqH39bggQc_Pj55a18CYLpj-Ert8-c8Y",
+          //   "url": "http://www.baidu.cn/",
+          //   "data": {
+          //     "first": {
+          //       "value": "您好，Restful 失效，请登录控制台查看。",
+          //       "color": "#c00"
+          //     },
+          //     "keyword1": {
+          //       "value": "Restful 失效"
+          //     },
+          //     "keyword2": {
+          //       "value": "2017-07-03 16:13:01"
+          //     },
+          //     "keyword3": {
+          //       "value": "高"
+          //     },
+          //     "remark": {
+          //       "value": "如果您十分钟内再次收到此信息，请及时处理。"
+          //     }
+          //   }
+          // }
+          // console.log(temp);
+          // Bmob.sendMasterMessage(temp).then(function (obj) {
+          //   console.log('发送成功');
+
+
+          // }, function (err) {
+
+          //   common.showTip('失败' + err);
+          // });
 
 
 

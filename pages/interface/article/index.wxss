@@ -1,0 +1,13 @@
+.weui-form-preview__img{
+  padding: 0px 0px;
+  line-height:0;
+}
+.weui-form-preview__img image{
+  width: 100%;
+}
+.weui-form-item{
+  margin-bottom: 15px;
+}
+.weui-form-preview__label{
+  color:#000;
+}
