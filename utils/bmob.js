@@ -226,7 +226,7 @@
         wx.showNavigationBarLoading()
         if (dataObject.category == "wechatApp") {
 
-            wx.uploadFile({
+          const uploadTask = wx.uploadFile({
                 url: url,
                 filePath: dataObject.base64,
                 name: 'file',
@@ -246,6 +246,12 @@
                     wx.hideNavigationBarLoading()
                 }
             });
+
+          uploadTask.onProgressUpdate((res) => {
+            console.log('上传进度', res.progress)
+            console.log('已经上传的数据长度', res.totalBytesSent)
+            console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+          })
         } else {
 
             wx.request({
@@ -2791,13 +2797,13 @@
    */
     Bmob.File = function (name, data, type) {
       var extension = /\.([^.]*)$/.exec(name);
-      if (extension == "mp4") {
+      if (extension[1] == "mp4") {
         data = data;
       }
       else {
         data = data[0];
       }
-
+      console.log("jjj",extension,name, data);
         this._name = name;
         // this._name = encodeBase64(utf16to8(name));
         var currentUser = Bmob.User.current();

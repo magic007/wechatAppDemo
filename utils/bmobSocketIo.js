@@ -2253,7 +2253,8 @@
     BmobSocketIo._initialize(applicationId);
   };
 
-  BmobSocketIo.serverURL = "wss://wss.bmob.cn/";
+  BmobSocketIo.serverURL = "wss://wss.bmobcloud.com/";
+  
 
   BmobSocketIo.obj = null;
 

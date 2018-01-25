@@ -208,39 +208,39 @@ Page({
           // });
 
 
-          //成功后发送主人模板消息，这个只需把openid改正确即可接收到， Bmob后端云公众号回复openid 
-          // var temp = {
-          //   "touser": "oUxY3w_jURG89H5wCIvJDPjJ5s2o",
-          //   "template_id": "-ERkPwp0ntimqH39bggQc_Pj55a18CYLpj-Ert8-c8Y",
-          //   "url": "http://www.baidu.cn/",
-          //   "data": {
-          //     "first": {
-          //       "value": "您好，Restful 失效，请登录控制台查看。",
-          //       "color": "#c00"
-          //     },
-          //     "keyword1": {
-          //       "value": "Restful 失效"
-          //     },
-          //     "keyword2": {
-          //       "value": "2017-07-03 16:13:01"
-          //     },
-          //     "keyword3": {
-          //       "value": "高"
-          //     },
-          //     "remark": {
-          //       "value": "如果您十分钟内再次收到此信息，请及时处理。"
-          //     }
-          //   }
-          // }
-          // console.log(temp);
-          // Bmob.sendMasterMessage(temp).then(function (obj) {
-          //   console.log('发送成功');
+          // 成功后发送主人模板消息，这个只需把openid改正确即可接收到， Bmob后端云公众号回复openid 
+          var temp = {
+            "touser": "oUxY3w_jURG89H5wCIvJDPjJ5s2o",
+            "template_id": "-ERkPwp0ntimqH39bggQc_Pj55a18CYLpj-Ert8-c8Y",
+            "url": "http://www.baidu.cn/",
+            "data": {
+              "first": {
+                "value": "您好，Restful 失效，请登录控制台查看。",
+                "color": "#c00"
+              },
+              "keyword1": {
+                "value": "Restful 失效"
+              },
+              "keyword2": {
+                "value": "2017-07-03 16:13:01"
+              },
+              "keyword3": {
+                "value": "高"
+              },
+              "remark": {
+                "value": "如果您十分钟内再次收到此信息，请及时处理。"
+              }
+            }
+          }
+          console.log(temp);
+          Bmob.sendMasterMessage(temp).then(function (obj) {
+            console.log('发送成功');
 
 
-          // }, function (err) {
+          }, function (err) {
 
-          //   common.showTip('失败' + err);
-          // });
+            common.showTip('失败' + err);
+          });
 
 
 

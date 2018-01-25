@@ -13,6 +13,8 @@ var grids = [
    
    {"name":"退出","ico":"logout.png","url":"../logout/logout"},
    { "name": "群聊", "ico": "liao.png", "url": "../interface/chatroom/chatroom" },
+   { "name": "客服处理", "ico": "login.png", "url": "../message/list/index" },
+   { "name": "微信手机号", "ico": "phone.png", "url": "getPhone/getPhone" },
   
 ];
 Page({    
