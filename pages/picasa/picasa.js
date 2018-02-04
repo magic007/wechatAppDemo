@@ -42,11 +42,12 @@ Page({
   upImg: function () {
     var that = this;
 
+
   // 注释这块是上传视频代码
-    wx.chooseVideo({
+    wx.chooseImage({
+      count: 9, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      maxDuration: 60,
-      camera: 'back',
       success: function (res) {
         wx.showNavigationBarLoading()
         that.setData({
@@ -56,7 +57,7 @@ Page({
         var urlArr = new Array();
         // var urlArr={};
         console.log("res= " + res)
-        var tempFilePath = res.tempFilePath;
+        var tempFilePath = res.tempFilePaths;
         console.log("tempFilePath= " + tempFilePath)
 
         var newDate = new Date();
@@ -89,7 +90,7 @@ Page({
           console.log(error)
         });
 
-
+      console.log(file);
 
 
         //如果你突然发现这个文件传了又想立即删了，可以直接执行

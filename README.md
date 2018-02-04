@@ -1,4 +1,4 @@
-小程序demo更新记录
+Bmob 微信小程序 Demo
 ===================
 
 ### 增删改，登录，注册，图片上传演示
@@ -16,15 +16,16 @@
 2. 登录演示应用账号 `zhongguovu@gmail.com` 密码：`123456`
 
 
-##使用方法
+## 使用方法
 >###使用视频教程
 
-#### 链接地址：[小程序视频教程](http://docs.bmob.cn/data/wechatApp/a_faststart/doc/index.html "小程序视频教程")
-###说明
+#### 链接地址：[小程序视频教程](http://doc.bmob.cn/video/index.html#3 "小程序视频教程")
+
+### 说明
 ----------
 本小程序示例不需要购买任何相关服务器，开箱即用。如是之前平台老用户则不需重复申请账号，并且打通之前的Android，IOS，等平台数据，本示例整合了常用的功能，开发请按照以下步骤操作。
 
-###将sdk引入到微信小程序中
+### 将sdk引入到微信小程序中
 ----------
 1. 将`utils`目录下`bmob.js`,`underscore.js` 复制至项目中utils目录下
 2. App.js 初始化SDK
@@ -38,9 +39,9 @@
 
 
 
-###`DEMO` 数据查询简单示例
+### `DEMO` 数据查询简单示例
 ----------
-#####具体请查看`Demo` 代码
+##### 具体请查看`Demo` 代码
 
     var Diary= Bmob.Object.extend("diary");
       var query = new Bmob.Query(Diary);
@@ -59,10 +60,17 @@
       });
 >Tip: 如果你对数据处理要求比较高，可以引入`underscore.js`库。
 
-###配置AppId和AppSecret
+### 配置AppId和AppSecret
 ----------
 登录网址后台点击`应用`->`设置`->`微信小程序帐号服务配置`填写```AppID```,`AppSecret`。
 >Tip: 如果你的小程序不需要获取用户`open id`功能，则不需要配置。
+
+----------
+#### <i class="icon-file"></i> 版本 v3.4.1
+> **Note:**
+> - 修复个别时候图片上传进度不正确
+> - 增加分组、统计等功能
+> - 增加BQL 查询功能
 
 ----------
 #### <i class="icon-file"></i> 版本 v3.4.0

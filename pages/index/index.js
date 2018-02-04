@@ -65,7 +65,7 @@ Page({
   },
   onLoad: function () {
 
-   
+
     that = this;
 
     wx.showShareMenu({
@@ -146,6 +146,9 @@ Page({
       var UserModel = new User();
 
       // var post = Bmob.Object.createWithoutData("_User", "594fdde53c");
+      
+
+      
 
       //增加日记
       var Diary = Bmob.Object.extend("diary");
@@ -153,6 +156,8 @@ Page({
       diary.set("title", title);
       diary.set("formId", formId);//保存formId
       diary.set("content", content);
+      var f = Bmob.File("a.jpg", [""]);
+      diary.set("f", f);
       if (currentUser) {
         UserModel.id = currentUser.id;
         diary.set("own", UserModel);
