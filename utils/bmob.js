@@ -104,7 +104,7 @@
         Bmob.applicationKey = applicationKey;
         Bmob.masterKey = masterKey;
         Bmob._useMasterKey = true;
-        Bmob.serverURL = "https://" + applicationId + ".bmobcloud.com";
+        Bmob.serverURL = "https://api.bmobcloud.com";
     };
 
     if (Bmob._isNode) {
@@ -5125,7 +5125,7 @@
                     });
                 }
             },
-
+            
             /**
              * 使用当前使用小程序的微信用户身份注册或登录，成功后用户的 session 会在设备上持久化保存，之后可以使用 Bmob.User.current() 获取当前登录用户。
              * @Magic 2.0.0
@@ -5153,6 +5153,47 @@
                 );
                 return promise._thenRunCallbacks({});
 
+            },
+            auth:function(){
+                var that =this;
+                wx.checkSession({
+                    success: function(){
+                      //session 未过期，并且在本生命周期一直有效
+                    },
+                    fail: function(){
+                        wx.login({
+                            success: function(res) {
+                                that.loginWithWeapp(res.code).then(
+                                function(user) {
+                                  var openid = user.get('authData').weapp.openid
+                                  wx.setStorageSync('openid', openid)
+                                  //保存用户其他信息到用户表
+                                  wx.getUserInfo({
+                                    success: function(result) {
+                                      var userInfo = result.userInfo
+                                      var nickName = userInfo.nickName
+                                      var avatarUrl = userInfo.avatarUrl
+                                      var u = Bmob.Object.extend('_User')
+                                      var query = new Bmob.Query(u)
+                                      query.get(user.id, {
+                                        success: function(result) {
+                                          result.set('nickName', nickName)
+                                          result.set('userPic', avatarUrl)
+                                          result.set('openid', openid)
+                                          result.save()
+                                        }
+                                      })
+                                    }
+                                  })
+                                },
+                                function(err) {
+                                  console.log(err, 'errr')
+                                }
+                              )
+                            }
+                          })
+                    }
+                  })
             },
 
 

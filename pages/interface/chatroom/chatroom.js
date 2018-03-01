@@ -1,10 +1,9 @@
-var BmobSocketIo = require('../../../utils/bmobSocketIo.js').BmobSocketIo;
+// 简单的小程序 WebSocket 信道封装
+const bmobSocketIo = require('../../../utils/bmobSocketIo');
 var Bmob = require('../../../utils/bmob.js');
 var that = this;
 
 var app = getApp();
-
-
 
 /**
  * 生成一条聊天室的消息的唯一 ID
@@ -48,6 +47,8 @@ Page({
    * 页面渲染完成后，启动聊天室
    * */
   onReady() {
+    // console.log(BmobSocketIo)
+    // var BmobSocketIo = this.BmobSocketIo = new BmobSocketIo('e9978deb922a3ee549d8ca3266edff09');
     wx.setNavigationBarTitle({ title: 'Bmob聊天室' });
 
     var pageReady = app.globalData.pageReady;
@@ -101,10 +102,7 @@ Page({
     }
   },
   onLoad() {
-    console.log('jjjjjj');
     var that = this;
-
-
   },
 
   /**
@@ -145,6 +143,7 @@ Page({
    */
   connect() {
 
+console.log("hello")
 
     var that = this;
 
@@ -153,13 +152,15 @@ Page({
     //记录进入房间
     welcome(that);
 
-
-
+    // new BmobSocketIo("39ee83f92ff3a195130596a4eaec5ddf");
+    var BmobSocketIo = this.bmobSocketIo = new bmobSocketIo('39ee83f92ff3a195130596a4eaec5ddf');
+    console.log("333")
 
 
 
     //初始连接socket.io服务器后，需要监听的事件都写在这个函数内
     BmobSocketIo.onInitListen = function () {
+      console.log('kkk')
       //订阅GameScore表的数据更新事件
       BmobSocketIo.updateTable("Chat"); //聊天记录表
       BmobSocketIo.updateTable("welcome");//欢迎进入表
@@ -186,7 +187,7 @@ Page({
 
 
     if (!this.pageReady) {
-      BmobSocketIo.init();
+      // BmobSocketIo.init();
       app.globalData.pageReady = true;
     }else{
       //第二次进来

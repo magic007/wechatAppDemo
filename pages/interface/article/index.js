@@ -19,7 +19,10 @@ Page({
       // query.equalTo("title", "bmob");
       // query.containedIn("title", ["Bmob", "hello", "sure"]);
       // query.ascending(列名称);
-      // 查询所有数据
+      // 查询当前数据数据
+      // var ks = [{ "createdAt": { "$gte": { "__type": "Date", "iso": "2014-07-15 00:00:00" } } },
+      // { "createdAt": { "$lte": { "__type": "Date", "iso": "2014-07-15 23:59:59" } } }];
+      // query.equalTo("$and", ks);
       query.find({
         success: function(results) {
           console.log("共查询到 " + results.length + " 条记录");
