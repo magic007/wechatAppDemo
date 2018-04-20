@@ -17,6 +17,48 @@ Page({
   },
   onReady: function (e) {
 
+    // var objects = new Array()
+    // objects.push({ "id": "1e9b9a093e", "className": "diary" })
+
+    // // 批量删除
+    // Bmob.Object.destroyAll(objects).then(function (res) {
+    //   // 成功
+    // },
+    //   function (error) {
+    //     // 异常处理
+    //   });
+
+
+    // wx.request({
+    //   url: 'https://api.bmob.cn/1/pay/refund',
+    //   header: {
+    //     'Content-Type': 'application/json',
+    //     'X-Bmob-Application-Id': 'c6fad58fb29451651c0a4dab46506498',
+    //     'X-Bmob-REST-API-Key': '81f67154e5dd055abacc14e5052da513',
+    //   },
+    //   method: "POST",
+    //   data: {
+    //     "order_no": "3a94dad09cef0697c87c58befc7jsapi",
+    //     "refund_fee": 0.1,
+    //     "desc": "退款",
+    //   },
+    //    success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+
+    // var res = {
+    //     "order_no": "3a94dad09cef0697c87c58befc7jsapi",
+    //     "refund_fee": 0.1,
+    //     "desc": "退款",
+    //   }
+    // Bmob.refund(res).then(function (obj) {
+    //   console.log('333', obj)
+    // },
+    //   function (err) {
+    //     console.log('失败了', err)
+    //   });
+
   },
   onShareAppMessage: function () {
     return {

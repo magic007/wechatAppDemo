@@ -130,6 +130,8 @@ Page({
 
             var file = new Bmob.File(name, tempFilePath);
             file.save().then(function (res) {
+              console.log(res)
+              return
               wx.hideNavigationBarLoading()
               var url = res.url();
               console.log("第" + i + "张Url" + url);

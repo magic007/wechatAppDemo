@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "1.9.93",
 	"appid": "wx85c527ae33ab3606",
 	"projectname": "%E6%B5%8B%E8%AF%95%E9%A1%B9%E7%9B%AE",
 	"condition": {
@@ -37,6 +37,12 @@
 					"id": -1,
 					"name": "活动",
 					"pathName": "pages/interface/article/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/index",
 					"query": ""
 				}
 			]

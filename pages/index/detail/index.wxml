@@ -7,7 +7,7 @@
 
     <view class="page__bd">
         <view class="weui-article">
-            <view class="weui-article__h1"> {{rows.title}}</view>
+            <view class="weui-article__h1"> {{rows.title}} {{rows.id}} {{rows.objectId}}</view>
             <view class="weui-article__section">
               
 

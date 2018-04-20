@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
     "pages/interface/article/detail/index",
@@ -12,7 +11,6 @@
     "pages/interface/article/index",
     "pages/interface/code/code",
     "pages/interface/getPhone/getPhone",
-    
     "pages/sendSms/sendSms",
     "pages/login/login",
     "pages/getOpenId/getOpenId",
@@ -20,7 +18,8 @@
     "pages/picasa/picasa",
     "pages/message/list/index",
     "pages/message/chatroom/index",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/test/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
