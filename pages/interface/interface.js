@@ -25,14 +25,13 @@ Page({
     },
     onLoad:function(){
         var that = this 
-        //调用应用实例的方法获取全局数据
-        app.getUserInfo(function(userInfo) {
-            console.log(userInfo)
-            //更新数据
-            that.setData({
-                userInfo: userInfo
-            })
-        })
+  
+    },
+    getUserInfo:function(e){
+      var userinfo = e.detail.userInfo;
+      // 这里会把头像信息写入到数据库
+      var user = new Bmob.User() //开始注册用户
+      user.getUserInfo(userinfo)
     },
     autuLogin:function(){
         common.showModal("App.js实现小程序访问则将数据写入系统User表，具体代码请查看App.js。")

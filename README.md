@@ -66,6 +66,16 @@ Bmob 微信小程序 Demo
 >Tip: 如果你的小程序不需要获取用户`open id`功能，则不需要配置。
 
 ----------
+#### <i class="icon-file"></i> 版本 v3.6.1
+
+> **Note:**
+>
+> - 应微信要求，登陆 auth() 函数，不再保存用户头像
+>
+> - 增加user.getUserInfo()函数， 更新用户昵称头像信息
+>
+>   ​
+
 #### <i class="icon-file"></i> 版本 v3.6.0
 
 > **Note:**

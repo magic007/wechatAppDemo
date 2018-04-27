@@ -18,6 +18,7 @@
           <view class="weui-grid__label">{{item.name}}</view>
         </navigator>
       </block>
+       <button class="weui-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取用户头像</button>
     </view>
   </view>
    <view class="page__ft" style='margin-top:20px;'>

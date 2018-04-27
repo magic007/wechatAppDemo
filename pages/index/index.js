@@ -5,7 +5,7 @@ var common = require('../../utils/common.js');
 var app = getApp();
 var that;
 Page({
-  
+
   data: {
     writeDiary: false,
     loading: false,
@@ -16,6 +16,28 @@ Page({
     modifyDiarys: false
   },
   onReady: function (e) {
+
+    // 创建Bmob.Object子类
+    var Diary = Bmob.Object.extend("diary");
+    var objects = new Array();
+    for (var i = 0; i < 5; i++) {
+      // 创建该类的一个实例
+      var diary = new Diary();
+      diary.set('objectId', 'ba74dc1f09')
+      diary.set('title', '9999999')
+      diary.set('content', '99999')
+      objects.push(diary)
+    }
+
+    // 批量创建（更新）
+    // Bmob.Object.saveAll(objects).then(function (objects) {
+    //   // 成功
+    //   console.log("批量更新成功", objects);
+    // },
+    //   function (error) {
+    //     // 异常处理
+    //     console.log("异常处理");
+    //   });
 
     // var objects = new Array()
     // objects.push({ "id": "1e9b9a093e", "className": "diary" })
@@ -71,15 +93,15 @@ Page({
         wx.getShareInfo({
           shareTicket: res.shareTickets,
           success(res) {
-            
+
 
             //内部调用云端代码
             var currentUser = Bmob.User.current();
             var data = {
               "objectId": currentUser.id, "encryptedData": res.encryptedData, "iv": res.iv
-              };
+            };
             console.log(data);
-           
+
             // console.log(data);
             Bmob.Cloud.run('getOpenGId', data).then(function (obj) {
               // var res = JSON.parse(obj)
@@ -88,7 +110,7 @@ Page({
               console.log(err)
             });
 
-            data = {"objectId": currentUser.id, "encryptedData": "Q3h+kMwbKZ52BsxgNT4GS5LTYeLLGIXnA/BZrg/9iMJBD5Qv3Fs5H66xe9ml7iNIsOBEtaeUG0InAxbZOhn1qEeAJ2aC3wYpjARR4pCYA1v87+bj9khaUDY6pvaKX5/4TFHrofKAmA0gTT6bSaHyiw==", "iv": "YHoSkWomdfiyvAWHoYvKiQ=="};
+            data = { "objectId": currentUser.id, "encryptedData": "Q3h+kMwbKZ52BsxgNT4GS5LTYeLLGIXnA/BZrg/9iMJBD5Qv3Fs5H66xe9ml7iNIsOBEtaeUG0InAxbZOhn1qEeAJ2aC3wYpjARR4pCYA1v87+bj9khaUDY6pvaKX5/4TFHrofKAmA0gTT6bSaHyiw==", "iv": "YHoSkWomdfiyvAWHoYvKiQ==" };
             console.log(data);
             Bmob.Cloud.run('getOpenGId', data).then(function (obj) {
               // var res = JSON.parse(obj)
@@ -114,10 +136,10 @@ Page({
       withShareTicket: true //要求小程序返回分享目标信息
     })
 
-    var k ='http://bmob-cdn-12917.b0.upaiyun.com/2017/07/18/d99d3bb7400cb1ed808f34896bff6fcc.jpg';
+    var k = 'http://bmob-cdn-12917.b0.upaiyun.com/2017/07/18/d99d3bb7400cb1ed808f34896bff6fcc.jpg';
 
-    var newUrl = k.replace("http://bmob-cdn-12917.b0.upaiyun.com","https://bmob-cdn-12917.bmobcloud.com")
-    
+    var newUrl = k.replace("http://bmob-cdn-12917.b0.upaiyun.com", "https://bmob-cdn-12917.bmobcloud.com")
+
     console.log(newUrl);
 
     //批量更新数据
@@ -188,9 +210,9 @@ Page({
       var UserModel = new User();
 
       // var post = Bmob.Object.createWithoutData("_User", "594fdde53c");
-      
 
-      
+
+
 
       //增加日记
       var Diary = Bmob.Object.extend("diary");
@@ -309,10 +331,10 @@ Page({
   },
   deleteDiary: function (event) {
 
-   
-var that =this;
-  
-  
+
+    var that = this;
+
+
 
     var objectId = event.target.dataset.id;
     wx.showModal({
