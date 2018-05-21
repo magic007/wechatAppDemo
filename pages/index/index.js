@@ -17,17 +17,18 @@ Page({
   },
   onReady: function (e) {
 
+
     // 创建Bmob.Object子类
-    var Diary = Bmob.Object.extend("diary");
-    var objects = new Array();
-    for (var i = 0; i < 5; i++) {
-      // 创建该类的一个实例
-      var diary = new Diary();
-      diary.set('objectId', 'ba74dc1f09')
-      diary.set('title', '9999999')
-      diary.set('content', '99999')
-      objects.push(diary)
-    }
+    // var Diary = Bmob.Object.extend("diary");
+    // var objects = new Array();
+    // for (var i = 0; i < 5; i++) {
+    //   // 创建该类的一个实例
+    //   var diary = new Diary();
+    //   diary.set('objectId', 'ba74dc1f09')
+    //   diary.set('title', '9999999')
+    //   diary.set('content', '99999')
+    //   objects.push(diary)
+    // }
 
     // 批量创建（更新）
     // Bmob.Object.saveAll(objects).then(function (objects) {

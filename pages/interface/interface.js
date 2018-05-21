@@ -30,7 +30,7 @@ Page({
     getUserInfo:function(e){
       var userinfo = e.detail.userInfo;
       // 这里会把头像信息写入到数据库
-      var user = new Bmob.User() //开始注册用户
+      var user = new Bmob.User() //实例化对象
       user.getUserInfo(userinfo)
     },
     autuLogin:function(){
